@@ -18,6 +18,7 @@ declare namespace wpsOffice  {
     subscribe?: ((arg0?: any) => any) | string
   }
 
+  
   /**
    * 定义用户头部按钮配置
    */
