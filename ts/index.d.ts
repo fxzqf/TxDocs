@@ -1,4 +1,4 @@
-declare namespace WebOffice {
+declare namespace wpsOffice  {
 
   /**
    * 定义用户头部其它按钮菜单
@@ -370,6 +370,6 @@ declare namespace WebOffice {
     config: (conf: IConfig) => IWps;
   }
 
-  export WebOfficeSDK;
+  //export  WebOfficeSDK;
   export { ICommonOptions, IConfig, IDBOptions, IEtOptions, IFlag, IIframeWH, IMessage, IOtlOptions, IPDFOptions, ISubscriptionsConf, IUserHeaderButtonConf, IUserHeaderSubItemsConf, IUserHeadersConf, IWppOptions, IWps, IWpsCommandBarAttr, IWpsCommandBarObjectAttr, IWpsCommandBars, IWpsOptions, IWpsWebApi, TGetClipboardData, clipboardData, tokenData };
 }
