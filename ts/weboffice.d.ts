@@ -1,4 +1,3 @@
-declare namespace wpsOffice  {
 
   /**
    * 定义用户头部其它按钮菜单
@@ -18,7 +17,7 @@ declare namespace wpsOffice  {
     subscribe?: ((arg0?: any) => any) | string
   }
 
-  
+
   /**
    * 定义用户头部按钮配置
    */
@@ -371,6 +370,5 @@ declare namespace wpsOffice  {
     config: (conf: IConfig) => IWps;
   }
 
-  //export  WebOfficeSDK;
+  export default WebOfficeSDK;
   export { ICommonOptions, IConfig, IDBOptions, IEtOptions, IFlag, IIframeWH, IMessage, IOtlOptions, IPDFOptions, ISubscriptionsConf, IUserHeaderButtonConf, IUserHeaderSubItemsConf, IUserHeadersConf, IWppOptions, IWps, IWpsCommandBarAttr, IWpsCommandBarObjectAttr, IWpsCommandBars, IWpsOptions, IWpsWebApi, TGetClipboardData, clipboardData, tokenData };
-}
