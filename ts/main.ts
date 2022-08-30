@@ -1,4 +1,4 @@
-///<reference path = "weboffice.d.ts" />
+
 "use strict";
 import WebOfficeSDK, { IConfig, IWps } from "./weboffice";
 class app{
