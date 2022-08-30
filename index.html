@@ -29,29 +29,11 @@
 <body>
   <div class="custom-mount"></div>
   <script src="./js/web-office-sdk-v1.1.19.umd.js"></script>
+  <script src="./js/main.js"></script>
   <!-- 注意添加 text/babel，否则无法编译 -->
   <script text="text/babel">
-    window.onload =async function () {
-      const jssdk = WebOfficeSDK.config({
-        url: 'https://www.kdocs.cn/l/coO0iEfp4s1c'
-        
-      })
-      jssdk.ApiEvent.AddApiEventListener("error", (data) => {
-        console.log("error: ", data);
-      });
-      jssdk.ApiEvent.AddApiEventListener('fileOpen', (data) => {
-
-        console.log('打开成功')
-      });
-
-      console.log(jssdk.iframeReady);
-      
-      await jssdk.ready()
-      if(!jssdk.iframeReady) await (window.jssdk.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://www.kdocs.cn/l/coO0iEfp4s1c");
-      
-
-    }
-
+    window.onload =new app();
+     
     /*
         window.onload = async function () {
     
