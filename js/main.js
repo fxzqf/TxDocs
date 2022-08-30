@@ -1,4 +1,4 @@
-///<reference path = "weboffice.d.ts" />
+/////<reference path = "weboffice.d.ts" />
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import WebOfficeSDK from "./weboffice";
+//import WebOfficeSDK from "./weboffice";
 class app {
     constructor() {
         this.jssdk = WebOfficeSDK.config({});

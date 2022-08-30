@@ -3,7 +3,7 @@
 import WebOfficeSDK, { IConfig, IWps } from "./weboffice";
 class app{
     jssdk:IWps=WebOfficeSDK.config({});
-    constructor(){
+     constructor(){
         this.jssdk.url="https://www.kdocs.cn/l/coO0iEfp4s1c";
         this.jssdk.ApiEvent.AddApiEventListener("error", (data) => {
             console.log("error: ", data);
@@ -13,8 +13,9 @@ class app{
         });
         this.start();
    }
-  async start():Promise<any> {
-    await this.jssdk.ready();
-  } 
+   async start()
+   {
+        await this.jssdk.ready();
 
+   }
 }
