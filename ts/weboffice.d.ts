@@ -366,10 +366,7 @@
   type TGetClipboardData = () => clipboardData | Promise<clipboardData>
 
 
-  interface WebOfficeSDK {
+  declare var WebOfficeSDK: {
     config: (conf: IConfig) => IWps;
   }
-
-  export default WebOfficeSDK;
-  export { ICommonOptions, IConfig, IDBOptions, IEtOptions, IFlag, IIframeWH, IMessage, IOtlOptions, IPDFOptions, ISubscriptionsConf, IUserHeaderButtonConf, IUserHeaderSubItemsConf, IUserHeadersConf, IWppOptions, IWps, IWpsCommandBarAttr, IWpsCommandBarObjectAttr, IWpsCommandBars, IWpsOptions, IWpsWebApi, TGetClipboardData, clipboardData, tokenData };
-declare var WebOfficeSDK:WebOfficeSDK;
+  //export { ICommonOptions, IConfig, IDBOptions, IEtOptions, IFlag, IIframeWH, IMessage, IOtlOptions, IPDFOptions, ISubscriptionsConf, IUserHeaderButtonConf, IUserHeaderSubItemsConf, IUserHeadersConf, IWppOptions, IWps, IWpsCommandBarAttr, IWpsCommandBarObjectAttr, IWpsCommandBars, IWpsOptions, IWpsWebApi, TGetClipboardData, clipboardData, tokenData };
