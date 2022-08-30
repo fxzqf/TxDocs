@@ -16,6 +16,7 @@ interface IUserHeaderSubItemsConf {
   subscribe?: ((arg0?: any) => any) | string
 }
 
+
 /**
  * 定义用户头部按钮配置
  */
@@ -38,7 +39,7 @@ interface IUserHeaderButtonConf {
 /**
  * 用于保存iframe原始尺寸
  */
- interface IIframeWH {
+interface IIframeWH {
   width: string;
   height: string;
 }
@@ -103,7 +104,7 @@ interface IWpsOptions {
 /**
  * 表格自定义配置
  */
-interface IEtOptions {}
+interface IEtOptions { }
 
 /**
  * pdf自定义配置
@@ -148,7 +149,7 @@ interface IDBOptions {
   /**
    * 是否显示使用反馈按钮
    */
-   isShowFeedback?: boolean
+  isShowFeedback?: boolean
 }
 
 /**
@@ -255,13 +256,13 @@ interface IConfig {
   refreshToken?: () => tokenData | Promise<tokenData>
   // 获取外部粘贴数据
   getClipboardData?: () => clipboardData | Promise<clipboardData>
-  onToast?: (toastData: {msg: string, action: string}) => void
+  onToast?: (toastData: { msg: string, action: string }) => void
   onHyperLinkOpen?: (linkData: { linkUrl: string }) => void
   cooperUserAttribute?: {
     isCooperUsersAvatarVisible?: boolean,
     cooperUsersColor?: [{
       userId: string | number,
-      color:  string
+      color: string
     }]
   }
 }
@@ -316,9 +317,9 @@ interface IWps {
   version: string
   url: string
   iframe: any
-  Enum? : any, // 即将废弃
+  Enum?: any, // 即将废弃
   Events?: any, // 即将废弃
-  Props?: string 
+  Props?: string
   mainVersion?: string
   ready: () => Promise<any>
   destroy: () => Promise<any>
@@ -330,13 +331,13 @@ interface IWps {
   PPTApplication?: () => any
   PDFApplication?: () => any
   Application?: any
-  setToken: (tokenData: {token: string, timeout?: number, hasRefreshTokenConfig: boolean}) => Promise<any>
-  setCommandBars: (args:  Array<IWpsCommandBars>) => Promise<void>
+  setToken: (tokenData: { token: string, timeout?: number, hasRefreshTokenConfig: boolean }) => Promise<any>
+  setCommandBars: (args: Array<IWpsCommandBars>) => Promise<void>
   tabs: {
-    getTabs: () => Promise<Array<{tabKey: number, text: string}>>
+    getTabs: () => Promise<Array<{ tabKey: number, text: string }>>
     switchTab: (tabKey: number) => Promise<any>,
   }
-  setCooperUserColor: (usersInfo: Array<{userId: string, color: string}>) => Promise<any>
+  setCooperUserColor: (usersInfo: Array<{ userId: string, color: string }>) => Promise<any>
   tokenData?: { token: string } | null
   commandBars?: Array<IWpsCommandBars> | null
   iframeReady?: boolean
@@ -349,7 +350,7 @@ interface IWps {
   }
   Stack?: any
   Free?: (objId: any) => Promise<any>
-  updateConfig(configData: {commandBars?: Array<IWpsCommandBars>}): Promise<void>
+  updateConfig(configData: { commandBars?: Array<IWpsCommandBars> }): Promise<void>
   executeCommandBar: (id: string) => void
 }
 
@@ -357,7 +358,7 @@ interface IFlag {
   apiReadySended: boolean,
   refreshToken?: () => tokenData | Promise<tokenData>,
   getClipboardData?: () => clipboardData | Promise<clipboardData>
-  onToast?: (toastData: {msg: string, action: string}) => void,
+  onToast?: (toastData: { msg: string, action: string }) => void,
   onHyperLinkOpen?: (linkData: { linkUrl: string }) => void
 }
 
@@ -367,6 +368,6 @@ type TGetClipboardData = () => clipboardData | Promise<clipboardData>
 interface WebOfficeSDK {
   config: (conf: IConfig) => IWps;
 }
-
+declare var WebOfficeSDK:WebOfficeSDK;
 export default WebOfficeSDK;
 export { ICommonOptions, IConfig, IDBOptions, IEtOptions, IFlag, IIframeWH, IMessage, IOtlOptions, IPDFOptions, ISubscriptionsConf, IUserHeaderButtonConf, IUserHeaderSubItemsConf, IUserHeadersConf, IWppOptions, IWps, IWpsCommandBarAttr, IWpsCommandBarObjectAttr, IWpsCommandBars, IWpsOptions, IWpsWebApi, TGetClipboardData, clipboardData, tokenData };
