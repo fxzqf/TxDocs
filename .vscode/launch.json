@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "type": "msedge",
+            "type": "pwa-msedge",
             "name": "Launch Microsoft Edge in headless mode",
             "request": "launch",
             "runtimeArgs": [
@@ -17,7 +17,19 @@
             "type": "vscode-edge-devtools.debug",
             "name": "Open Edge DevTools",
             "request": "attach",
-            "url": "C:\\Users\\fxzqf\\Documents\\kdocs\\index,html", // Provide your project's url to finish configuring
+            "url": "C:\\Users\\fxzqf\\Documents\\kdocs\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "Launch Microsoft Edge",
+            "request": "launch",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ],
+            "url": "C:\\Users\\fxzqf\\Documents\\kdocs\\index.html", // Provide your project's url to finish configuring
             "presentation": {
                 "hidden": true
             }

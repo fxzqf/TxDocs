@@ -317,7 +317,7 @@
   interface IWps {
     version: string
     url: string
-    iframe: any
+    iframe: HTMLIFrameElement
     Enum?: any, // 即将废弃
     Events?: any, // 即将废弃
     Props?: string
