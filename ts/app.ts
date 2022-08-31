@@ -5,7 +5,7 @@ class app {
   constructor() {
     this.jssdk = WebOfficeSDK.config({
       url: "https://www.kdocs.cn/l/cagNbUYJX08f?R=%2FS%2F4",
-      mount: document.getElementById("custom-mount"),
+      mount: document.getElementById("custom-mount") as HTMLElement,
     });
     console.log(this.jssdk.iframeReady);
     
