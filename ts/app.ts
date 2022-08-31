@@ -1,5 +1,5 @@
+///<reference path="../js/weboffice.d.ts"/>
 "use strict";
-///<reference path="weboffice.d.ts"/>
 class app {
   jssdk: IWps;
   constructor() {
