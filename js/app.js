@@ -1,3 +1,4 @@
+///<reference path="../js/weboffice.d.ts"/>
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -8,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-///<reference path="weboffice.d.ts"/>
 class app {
     constructor() {
         this.start = () => __awaiter(this, void 0, void 0, function* () {
