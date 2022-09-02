@@ -25,7 +25,7 @@ class app {
                 Data: { message: '测试' }
             });
             //const range = await this.jssdk.Application.Range('A1')
-            // 设置公式：A1 = A2 + A3
+            // 设置公式：A1   = A2 + A3
             //range.Formula = '=A2+A3'
         });
         this.jssdk = WebOfficeSDK.config({
