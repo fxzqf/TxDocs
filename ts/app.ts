@@ -16,4 +16,5 @@ class app {
 }
 window.onload = () => {
   new app();
+  
 }
