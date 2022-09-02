@@ -25,7 +25,7 @@ class app {
 
     // 发送全局广播
     const result = await Public.SendBroadcast({
-      Data: { message: '测试' }
+      Data: { message: '测试1' }
     });
 
     //const range = await this.jssdk.Application.Range('A1')

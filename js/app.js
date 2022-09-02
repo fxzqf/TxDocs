@@ -22,7 +22,7 @@ class app {
             const Public = yield app1.Public;
             // 发送全局广播
             const result = yield Public.SendBroadcast({
-                Data: { message: '测试' }
+                Data: { message: '测试1' }
             });
             //const range = await this.jssdk.Application.Range('A1')
             // 设置公式：A1   = A2 + A3
