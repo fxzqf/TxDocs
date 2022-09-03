@@ -331,7 +331,10 @@
     WppApplication?: () => any
     PPTApplication?: () => any
     PDFApplication?: () => any
-    Application?:{Range:any}
+    Application?:{
+      Range:any,
+      Public:any
+    }
     setToken: (tokenData: { token: string, timeout?: number, hasRefreshTokenConfig: boolean }) => Promise<any>
     setCommandBars: (args: Array<IWpsCommandBars>) => Promise<void>
     tabs: {
