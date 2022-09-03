@@ -16,6 +16,8 @@ class app {
             mount: document.getElementsByClassName("custom-mount")[0],
             onHyperLinkOpen: (obj) => __awaiter(this, void 0, void 0, function* () {
                 console.log(obj.linkUrl);
+                const app1 = this.jssdk.Application;
+                console.log(app1);
             }),
             onToast: ({ msg, action }) => { alert(msg); },
         });

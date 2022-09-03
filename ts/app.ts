@@ -6,6 +6,8 @@ class app {
     mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
     onHyperLinkOpen: async (obj: { linkUrl: string }) => { 
       console.log(obj.linkUrl);
+      const app1 = this.jssdk.Application;
+      console.log(app1);
       },
     onToast: ({ msg, action }) => { alert(msg) },
   });
