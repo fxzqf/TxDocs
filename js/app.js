@@ -14,16 +14,10 @@ class app {
         this.jssdk = WebOfficeSDK.config({
             url: "https://www.kdocs.cn/l/cagNbUYJX08f?R=%2FS%2F4",
             mount: document.getElementsByClassName("custom-mount")[0],
-            onHyperLinkOpen: (obj) => {
-                const app1 = this.jssdk.Application;
-                // 公共处理对象
-                const Public = app1.Public;
-                // 发送全局广播
-                const result = Public.SendBroadcast({
-                    Data: { message: '测试' }
-                });
-            },
-            onToast: ({ msg, action }) => { alert("DDDD"); },
+            onHyperLinkOpen: (obj) => __awaiter(this, void 0, void 0, function* () {
+                console.log(obj.linkUrl);
+            }),
+            onToast: ({ msg, action }) => { alert(msg); },
         });
         //get Application(): any {
         //  return (async () => {return await this.jssdk.Application;})()
