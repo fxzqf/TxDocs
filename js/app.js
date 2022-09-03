@@ -22,8 +22,9 @@ class app {
         //}
         this.start = () => __awaiter(this, void 0, void 0, function* () {
             yield this.jssdk.ready();
+            const app1 = this.jssdk.Application;
             // 公共处理对象
-            const Public = yield this.jssdk.Application.Public;
+            const Public = yield app1.Public;
             // 发送全局广播
             const result = yield Public.SendBroadcast({
                 Data: { message: '测试' }

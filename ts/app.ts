@@ -24,14 +24,16 @@ class app {
     await this.jssdk.ready();
 
 
-    // 公共处理对象
-    const Public = await this.jssdk.Application.Public;
 
+    const app1 = this.jssdk.Application;
+    
+    // 公共处理对象
+    const Public = await app1.Public;
+  
     // 发送全局广播
     const result = await Public.SendBroadcast({
-      Data: { message: '测试' }
+      Data: {message: '测试'}
     });
-
     //const range = await this.jssdk.Application.Range('A1')
 
     // 设置公式：A1   = A2 + A3
