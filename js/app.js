@@ -11,19 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 class app {
     constructor() {
+        //get Application(): any {
+        //  return (async () => {return await this.jssdk.Application;})()
+        //}
         this.start = () => __awaiter(this, void 0, void 0, function* () {
             yield this.jssdk.ready();
-            const app1 = this.jssdk.Application;
-            // 接收全局广播
-            app1.Sub.OnBroadcast = (e) => __awaiter(this, void 0, void 0, function* () {
-                console.log('接收全局广播', e);
-            });
-            // 公共处理对象
-            const Public = yield app1.Public;
-            // 发送全局广播
-            const result = yield Public.SendBroadcast({
-                Data: { message: '测试' }
-            });
+            this.Application = yield this.jssdk.Application;
             //const range = await this.jssdk.Application.Range('A1')
             // 设置公式：A1   = A2 + A3
             //range.Formula = '=A2+A3'
@@ -37,5 +30,5 @@ class app {
     }
 }
 window.onload = () => {
-    new app();
+    window.App = new app();
 };
