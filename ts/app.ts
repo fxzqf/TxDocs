@@ -4,6 +4,7 @@ class app {
   private jssdk=WebOfficeSDK.config({
     url: "https://www.kdocs.cn/l/cagNbUYJX08f?R=%2FS%2F4",
     mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
+    onHyperLinkOpen:(obj:{linkUrl:string}) => {console.log(obj.linkUrl)}
   });
   Application:any;    
   constructor() {

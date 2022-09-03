@@ -14,6 +14,7 @@ class app {
         this.jssdk = WebOfficeSDK.config({
             url: "https://www.kdocs.cn/l/cagNbUYJX08f?R=%2FS%2F4",
             mount: document.getElementsByClassName("custom-mount")[0],
+            onHyperLinkOpen: (obj) => { console.log(obj.linkUrl); }
         });
         //get Application(): any {
         //  return (async () => {return await this.jssdk.Application;})()
