@@ -8,6 +8,9 @@ class App {
     this.Config = {
       url: "https://www.kdocs.cn/l/csyLMG9IAaJU",
       mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
+      onHyperLinkOpen(linkData) {
+        console.log(linkData);
+      },
       //onToast(toastData) { alert(toastData.action); },
       commonOptions: {
         isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）

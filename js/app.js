@@ -5,6 +5,9 @@ class App {
         this.Config = {
             url: "https://www.kdocs.cn/l/csyLMG9IAaJU",
             mount: document.getElementsByClassName("custom-mount")[0],
+            onHyperLinkOpen(linkData) {
+                console.log(linkData);
+            },
             //onToast(toastData) { alert(toastData.action); },
             commonOptions: {
                 isShowTopArea: true,
