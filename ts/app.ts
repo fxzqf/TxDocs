@@ -1,41 +1,47 @@
 ///<reference path="../js/weboffice.d.ts"/>
 "use strict";
 class App {
-  private Config: IConfig;
-  private application: any;
-  jssdk: IWps;
-  get Application() {
-
-    return this.application;
-  }
-
+    private Config: IConfig;
+    public Application:any;
+  wps: IWps;
   constructor() {
     this.Config = {
-      url: "https://kdocs.cn/l/cgPO0CnUJPTR",
+      url: "https://www.kdocs.cn/l/csyLMG9IAaJU",
       mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
-      onToast(toastData) { alert(toastData.action); },
+      //onToast(toastData) { alert(toastData.action); },
       commonOptions: {
-        isShowTopArea: false, // 隐藏顶部区域（头部和工具栏）
+        isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
         isShowHeader: true, // 隐藏头部区域
         isIframeViewFullscreen: false,
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
-      },
-      otlOptions: { loadOptions: "https://www.baidu.com" }
+      }
     };
-    this.jssdk = WebOfficeSDK.config(this.Config);
-    this.Start();
-    // alert(this.Application);
+    this.wps = WebOfficeSDK.config(this.Config);
+    this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => {console.log("fileOpen: ", data);});
+    this.wps.ready().then((e)=>{
+        this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
+        this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange",this.SelectChange);   
+        return e.ActiveSheet.Name;
+    }).then((e)=>{
+      console.log(e);
+    });
+    
+
+
+    
+    
+
   }
+  
 
-  Start = async () => {
-    await this.jssdk.ready();
-    this.application = this.jssdk.Application;
-    const operatorsInfo = await this.application.ActiveWorkbook.GetOperatorsInfo();
-    console.log(operatorsInfo);
-
+  SheetActive(data:any){
+    console.log("SelectActive");
   }
-
+  SelectChange(data:any){
+    console.log("SelectChange");
+  }
+  
 
 
   /*
@@ -65,5 +71,4 @@ class App {
 
 
 
-}
 
