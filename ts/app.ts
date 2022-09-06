@@ -15,7 +15,7 @@ class App {
       //onToast(toastData) { alert(toastData.action); },
       commonOptions: {
             isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
-            isShowHeader: true, // 隐藏头部区域
+            isShowHeader: false, // 隐藏头部区域
             isIframeViewFullscreen: false,
             isParentFullscreen: false,
             isBrowserViewFullscreen: false

@@ -11,7 +11,7 @@ class App {
             //onToast(toastData) { alert(toastData.action); },
             commonOptions: {
                 isShowTopArea: true,
-                isShowHeader: true,
+                isShowHeader: false,
                 isIframeViewFullscreen: false,
                 isParentFullscreen: false,
                 isBrowserViewFullscreen: false
