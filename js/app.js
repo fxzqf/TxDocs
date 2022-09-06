@@ -18,6 +18,11 @@ class app {
                 console.log(obj.linkUrl);
                 const app1 = this.jssdk.Application;
                 console.log(app1);
+                const Public = yield app.Public;
+                // 发送全局广播
+                const result = yield Public.SendBroadcast({
+                    Data: { message: '测试' }
+                });
             }),
             onToast: ({ msg, action }) => { alert(msg); },
         });

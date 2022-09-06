@@ -4,11 +4,16 @@ class app {
   private jssdk = WebOfficeSDK.config({
     url: "https://www.kdocs.cn/l/cagNbUYJX08f?R=%2FS%2F4",
     mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
-    onHyperLinkOpen: async (obj: { linkUrl: string }) => { 
+    onHyperLinkOpen: async (obj: { linkUrl: string }) => {
       console.log(obj.linkUrl);
       const app1 = this.jssdk.Application;
       console.log(app1);
-      },
+      const Public = await app.Public;
+      // 发送全局广播
+      const result = await Public.SendBroadcast({
+        Data: { message: '测试' }
+      });
+    },
     onToast: ({ msg, action }) => { alert(msg) },
   });
   Application: any;
@@ -29,7 +34,7 @@ class app {
 
 
 
-    
+
     //const range = await this.jssdk.Application.Range('A1')
 
     // 设置公式：A1   = A2 + A3
