@@ -3,31 +3,33 @@
 class App {
     private Config: IConfig;
     public Application:any;
-  wps: IWps;
-  constructor() {
-    this.Config = {
-      url: "https://www.kdocs.cn/l/csyLMG9IAaJU",
-      mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
-      onHyperLinkOpen(linkData) {
-        console.log(linkData);
+    wps: IWps;
+    constructor() {
+
+        this.Config = {
+            url: "https://www.kdocs.cn/l/csyLMG9IAaJU",
+            mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
+            onHyperLinkOpen(linkData) {
+            console.log(linkData);
       },
       //onToast(toastData) { alert(toastData.action); },
       commonOptions: {
-        isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
-        isShowHeader: true, // 隐藏头部区域
-        isIframeViewFullscreen: false,
-        isParentFullscreen: false,
-        isBrowserViewFullscreen: false
+            isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
+            isShowHeader: true, // 隐藏头部区域
+            isIframeViewFullscreen: false,
+            isParentFullscreen: false,
+            isBrowserViewFullscreen: false
       }
     };
+
     this.wps = WebOfficeSDK.config(this.Config);
     this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => {console.log("fileOpen: ", data);});
     this.wps.ready().then((e)=>{
-        this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
-        this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange",this.SelectChange);   
-        return e.ActiveSheet.Name;
+          this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
+          this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange",this.SelectChange);   
+          return e.ActiveSheet.Name;
     }).then((e)=>{
-      console.log(e);
+          console.log(e);
     });
     
 
@@ -70,8 +72,4 @@ class App {
   //get Application(): any {
   //  return (async () => {return await this.jssdk.Application;})()
   //}
-
-
-
-
 
