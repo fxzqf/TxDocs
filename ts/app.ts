@@ -5,12 +5,13 @@ class App {
     public Application:any;
     wps: IWps;
     constructor() {
-
+        let that=this;
         this.Config = {
-            url: "https://www.kdocs.cn/l/csyLMG9IAaJU",
+            url: "https://www.kdocs.cn/l/cgPO0CnUJPTR?R=%2FS%2F9",
             mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
             onHyperLinkOpen(linkData) {
-            console.log(linkData);
+            that.wps.iframe.src=linkData.linkUrl;
+            console.log(linkData.linkUrl);
       },
       //onToast(toastData) { alert(toastData.action); },
       commonOptions: {
@@ -72,4 +73,3 @@ class App {
   //get Application(): any {
   //  return (async () => {return await this.jssdk.Application;})()
   //}
-

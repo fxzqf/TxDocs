@@ -2,11 +2,13 @@
 "use strict";
 class App {
     constructor() {
+        let that = this;
         this.Config = {
-            url: "https://www.kdocs.cn/l/csyLMG9IAaJU",
+            url: "https://www.kdocs.cn/l/cgPO0CnUJPTR?R=%2FS%2F9",
             mount: document.getElementsByClassName("custom-mount")[0],
             onHyperLinkOpen(linkData) {
-                console.log(linkData);
+                that.wps.iframe.src = linkData.linkUrl;
+                console.log(linkData.linkUrl);
             },
             //onToast(toastData) { alert(toastData.action); },
             commonOptions: {
