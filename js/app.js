@@ -26,11 +26,11 @@ class App {
             this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", this.SelectChange);
             return e.ActiveWorkbook.GetOperatorsInfo();
         }).then((e) => {
-            console.log(e);
+            console.log(e.response);
         });
     }
     SheetActive(data) {
-        this.wps.Application.;
+        console.log("SelectChange");
     }
     SelectChange(data) {
         console.log("SelectChange");

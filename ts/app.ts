@@ -1,54 +1,46 @@
 ///<reference path="../js/weboffice.d.ts"/>
 "use strict";
 class App {
-    private Config: IConfig;
-    public Application:any;
-    wps: IWps;
-    constructor() {
-        let that=this;
-        this.Config = {
-            url: "https://www.kdocs.cn/l/coCE5X5NQSzP?R=%2FS%2F4",
-            mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
-            onHyperLinkOpen(linkData) {
-              that.wps.iframe.src="https://www.kdocs.cn/"+linkData.linkUrl;
-              console.log(linkData.linkUrl);
-            },
-      //onToast(toastData) { alert(toastData.action); },
+  private Config: IConfig;
+  public Application:any;
+  wps: IWps;
+  constructor() {
+    let that=this;
+    this.Config = {
+      url: "https://www.kdocs.cn/l/coCE5X5NQSzP?R=%2FS%2F4",
+      mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
+      onHyperLinkOpen(linkData) {
+        that.wps.iframe.src="https://www.kdocs.cn/"+linkData.linkUrl;
+        console.log(linkData.linkUrl);
+      },
+      onToast(toastData) { console.log(toastData.action); },
       commonOptions: {
-            isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
-            isShowHeader: false, // 隐藏头部区域
-            isIframeViewFullscreen: false,
-            isParentFullscreen: false,
-            isBrowserViewFullscreen: false
-          }
+        isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
+        isShowHeader: false, // 隐藏头部区域
+        isIframeViewFullscreen: false,
+        isParentFullscreen: false,
+        isBrowserViewFullscreen: false
+      }
     };
-
     this.wps = WebOfficeSDK.config(this.Config);
     this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => {console.log("fileOpen: ", data);});
-    this.wps.ready().then((e)=>{
-          this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
-          this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange",this.SelectChange);   
-          
-          return e.ActiveWorkbook.GetOperatorsInfo();
+    this.wps.ready().then((e:EtApplication)=>{
+      this.Application=e;
+      this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
+      this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange",this.SelectChange);   
+      return e.ActiveWorkbook.GetOperatorsInfo();
     }).then((e)=>{
-          console.log(e);
-    });
-    
-
-
-    
-    
-
-  }
+      console.log(e.response);
+    });}
   
 
   SheetActive(data:any){
-    this.wps.Application.;
+    console.log("SelectChange");
   }
   SelectChange(data:any){
     console.log("SelectChange");
   }
-  
+}
 
 
   /*
