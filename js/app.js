@@ -4,10 +4,10 @@ class App {
     constructor() {
         let that = this;
         this.Config = {
-            url: "https://www.kdocs.cn/l/cgPO0CnUJPTR?R=%2FS%2F9",
+            url: "https://www.kdocs.cn/l/coCE5X5NQSzP?R=%2FS%2F4",
             mount: document.getElementsByClassName("custom-mount")[0],
             onHyperLinkOpen(linkData) {
-                that.wps.iframe.src = linkData.linkUrl;
+                that.wps.iframe.src = "https://www.kdocs.cn/" + linkData.linkUrl;
                 console.log(linkData.linkUrl);
             },
             //onToast(toastData) { alert(toastData.action); },
@@ -24,13 +24,13 @@ class App {
         this.wps.ready().then((e) => {
             this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
             this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", this.SelectChange);
-            return e.ActiveSheet.Name;
+            return e.ActiveWorkbook.GetOperatorsInfo();
         }).then((e) => {
             console.log(e);
         });
     }
     SheetActive(data) {
-        console.log("SelectActive");
+        this.wps.Application.;
     }
     SelectChange(data) {
         console.log("SelectChange");
