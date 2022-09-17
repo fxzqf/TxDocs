@@ -10,7 +10,7 @@ class App {
                 that.wps.iframe.src = "https://www.kdocs.cn/" + linkData.linkUrl;
                 console.log(linkData.linkUrl);
             },
-            //onToast(toastData) { alert(toastData.action); },
+            onToast(toastData) { console.log(toastData.action); },
             commonOptions: {
                 isShowTopArea: true,
                 isShowHeader: false,
@@ -22,6 +22,7 @@ class App {
         this.wps = WebOfficeSDK.config(this.Config);
         this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
         this.wps.ready().then((e) => {
+            this.Application = e;
             this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
             this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", this.SelectChange);
             return e.ActiveWorkbook.GetOperatorsInfo();
@@ -33,6 +34,6 @@ class App {
         console.log("SelectChange");
     }
     SelectChange(data) {
-        console.log("SelectChange");
+        console.log(this.Application);
     }
 }
