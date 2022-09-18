@@ -3,7 +3,7 @@
 class App {
     constructor() {
         this.Config = {};
-        this.Config.url = "https://f.kdocs.cn/w/qSwmuCBf/?entrance=#write";
+        this.Config.url = "https://pub.kdocs.cn/t/tdBZKjV3I4IJCNO";
         this.Config.mount = document.getElementsByClassName("custom-mount")[0];
         this.Config.commonOptions = {
             isShowTopArea: true,
@@ -13,7 +13,7 @@ class App {
             isBrowserViewFullscreen: false
         };
         this.Config.onHyperLinkOpen = (linkData) => {
-            //this.wps.iframe.src = "https://www.kdocs.cn/" + linkData.linkUrl;
+            this.wps.iframe.src = linkData.linkUrl;
             console.log(linkData.linkUrl);
         };
         this.Config.onToast = (toastData) => { console.log(toastData.action); };
