@@ -1,5 +1,5 @@
 ///<reference path="../js/weboffice.d.ts"/>
-"use strict";
+
 class App {
 
   private Config: IConfig = {};
@@ -17,14 +17,14 @@ class App {
       isBrowserViewFullscreen: false
     }
     this.Config.onHyperLinkOpen = (linkData) => {
-      this.wps.iframe.src =linkData.linkUrl;
+      this.wps.iframe.src = linkData.linkUrl;
       console.log(linkData.linkUrl);
     }
     this.Config.onToast = (toastData) => { console.log(toastData.action); }
 
     this.wps = WebOfficeSDK.config(this.Config);
-    this.wps.iframe.onload=()=>{alert(this.wps.iframe.src);}
-    this.wps.iframe.onclick=()=>{alert(this.wps.iframe.src);}
+    this.wps.iframe.onload = () => { alert(this.wps.iframe.src); }
+    this.wps.iframe.onclick = () => { alert(this.wps.iframe.src); }
     this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
     this.wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
     this.wps.ready().then((e: EtApplication) => {
@@ -35,7 +35,7 @@ class App {
       return e.ActiveWorkbook.GetOperatorsInfo();
     }).then((e) => {
       console.log(e.response);
-    }).catch((e)=>{
+    }).catch((e) => {
       alert(this);
     });
   }
@@ -51,11 +51,26 @@ class App {
         console.log("Promise create");
 
       });
-    promise.then((e=>{console.log(e);}))
+    promise.then((e => { console.log(e); }))
     console.log(this.Application);
   }
 }
 
+
+
+
+window.onload = () => {
+
+  var promise = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      alert("hello world");
+    }, 2000);
+  });
+  alert("One");  
+
+  //promise.then(); 
+  //let app = new App()
+}
 
 /*
 this.jssdk = WebOfficeSDK.config({
