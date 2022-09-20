@@ -73,13 +73,14 @@ window.onload = () => {
   }
   else {
     console.log(result)
-
     const data = null;
     const xhr = new XMLHttpRequest();
     xhr.withCredentials = false;
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === this.DONE) {
         console.log(this.responseText);
+
+
       }
     });
     xhr.open("GET", "https://developer.kdocs.cn/api/v1/oauth2/access_token?code="+result[1]+"&app_id="+appID+"&app_key="+appKey);
