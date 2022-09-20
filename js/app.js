@@ -1,5 +1,7 @@
 "use strict";
 ///<reference path="../js/weboffice.d.ts"/>
+function abc() {
+}
 class App {
     constructor() {
         this.Config = {};
@@ -47,16 +49,38 @@ class App {
     }
 }
 window.onload = () => {
-    var promise = new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            alert("hello world");
-        }, 2000);
-    });
-    alert("One");
-    //promise.then(); 
+    let result = window.location.search.substring(1).match(/\&*code=([^&]*)/);
+    const appID = "AK20220806RAKOHP";
+    const appKey = "opgsyipxflxziyyyvoqsafazqymfqyzu";
+    if (result == null) {
+        const scope = "user_basic,access_personal_files,edit_personal_files";
+        const redirect_uri = "https://fxzqf.github.io/kdocs/";
+        window.location.href = "https://developer.kdocs.cn/h5/auth?app_id=" + appID + "&scope=" + scope + "&redirect_uri=" + redirect_uri + "&state=state";
+    }
+    else {
+        console.log(result);
+        const data = null;
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = false;
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                console.log(this.responseText);
+            }
+        });
+        xhr.open("GET", "https://developer.kdocs.cn/api/v1/oauth2/access_token?code=" + result[1] + "&app_id=" + appID + "&app_key=" + appKey);
+        xhr.send(data);
+    }
     //let app = new App()
 };
 /*
+
+var promise = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve("hghg");
+    }, 2000);
+  });
+  promise.then((e)=>{alert(e)});
+
 this.jssdk = WebOfficeSDK.config({
   url: "https://www.kdocs.cn/l/cagNbUYJX08f?R=%2FS%2F4",
   
