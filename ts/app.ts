@@ -83,8 +83,9 @@ window.onload = () => {
 
       }
     });
-    xhr.open("GET", "https://developer.kdocs.cn/api/v1/oauth2/access_token?code="+result[1]+"&app_id="+appID+"&app_key="+appKey);
-    xhr.send(data);
+    console.log("https://developer.kdocs.cn/api/v1/oauth2/access_token?code="+result[1]+"&app_id="+appID+"&app_key="+appKey);
+    //xhr.open("GET", "https://developer.kdocs.cn/api/v1/oauth2/access_token?code="+result[1]+"&app_id="+appID+"&app_key="+appKey);
+    //xhr.send(data);
   }
 
   //let app = new App()
