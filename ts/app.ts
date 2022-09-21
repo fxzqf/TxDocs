@@ -72,7 +72,7 @@ window.onload = () => {
     window.location.href = "https://developer.kdocs.cn/h5/auth?app_id="+appID+"&scope="+scope+"&redirect_uri="+redirect_uri+"&state=state";
   }
   else {
-    console.log(result)
+    /*console.log(result)*/
     const data = null;
     const xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
