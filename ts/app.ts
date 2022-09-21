@@ -75,7 +75,7 @@ window.onload = () => {
     console.log(result)
     const data = null;
     const xhr = new XMLHttpRequest();
-    xhr.withCredentials = false;
+    //xhr.withCredentials = false;
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === this.DONE) {
         console.log(this.responseText);
