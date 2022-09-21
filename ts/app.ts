@@ -75,6 +75,8 @@ window.onload = () => {
     /*console.log(result)*/
     const data = null;
     const xhr = new XMLHttpRequest();
+    xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === this.DONE) {
