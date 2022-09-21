@@ -61,9 +61,6 @@ window.onload = () => {
         /*console.log(result)*/
         const data = null;
         const xhr = new XMLHttpRequest();
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-        xhr.setRequestHeader("Access-Control-Allow-Origin-Credentials", "true");
-        xhr.setRequestHeader("Access-Control-Allow-Origin-methods", "*");
         xhr.withCredentials = true;
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
@@ -72,6 +69,9 @@ window.onload = () => {
         });
         console.log("https://developer.kdocs.cn/api/v1/oauth2/access_token?code=" + result[1] + "&app_id=" + appID + "&app_key=" + appKey);
         xhr.open("GET", "https://developer.kdocs.cn/api/v1/oauth2/access_token?code=" + result[1] + "&app_id=" + appID + "&app_key=" + appKey);
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        xhr.setRequestHeader("Access-Control-Allow-Origin-Credentials", "true");
+        xhr.setRequestHeader("Access-Control-Allow-Origin-methods", "*");
         xhr.send(data);
     }
     //let app = new App()
