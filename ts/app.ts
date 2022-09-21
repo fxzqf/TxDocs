@@ -75,7 +75,7 @@ window.onload = () => {
     console.log(result)
     const data = null;
     const xhr = new XMLHttpRequest();
-    //xhr.withCredentials = false;
+    xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === this.DONE) {
         console.log(this.responseText);
@@ -84,8 +84,8 @@ window.onload = () => {
       }
     });
     console.log("https://developer.kdocs.cn/api/v1/oauth2/access_token?code="+result[1]+"&app_id="+appID+"&app_key="+appKey);
-    //xhr.open("GET", "https://developer.kdocs.cn/api/v1/oauth2/access_token?code="+result[1]+"&app_id="+appID+"&app_key="+appKey);
-    //xhr.send(data);
+    xhr.open("GET", "https://developer.kdocs.cn/api/v1/oauth2/access_token?code="+result[1]+"&app_id="+appID+"&app_key="+appKey);
+    xhr.send(data);
   }
 
   //let app = new App()
