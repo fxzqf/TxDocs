@@ -20,10 +20,6 @@ class App {
       isBrowserViewFullscreen: false
     }
     this.Config.onHyperLinkOpen = (linkData) => {
-<<<<<<< Updated upstream
-      this.wps.iframe.src = linkData.linkUrl;
-      console.log(linkData.linkUrl);
-=======
       this.Config.url = linkData.linkUrl;
       this.wps = WebOfficeSDK.config(this.Config);
       this.wps.ready().then((e: EtApplication) => {
@@ -32,12 +28,10 @@ class App {
         return e.ActiveWorkbook.GetOperatorsInfo();
       })
       console.log("Link:" + linkData.linkUrl);
->>>>>>> Stashed changes
     }
     this.Config.onToast = (toastData) => { console.log("Toast:" + toastData.action); }
     this.wps=WebOfficeSDK.config(this.Config);
 
-<<<<<<< Updated upstream
     this.wps = WebOfficeSDK.config(this.Config);
     this.wps.iframe.onload = () => { alert(this.wps.iframe.src); }
     this.wps.iframe.onclick = () => { alert(this.wps.iframe.src); }
@@ -55,9 +49,6 @@ class App {
       alert(this);
     });
   }
-=======
-    //this.wps.ApiEvent.AddApiEventListener("error:", (data) => { console.log("error: ", data); });
->>>>>>> Stashed changes
 
     /*this.wps.iframe.onload1 = () => {
       this.Config.url = this.wps.iframe.src;
@@ -71,7 +62,6 @@ class App {
         console.log(e.response);
       }).catch((e) => {
 
-<<<<<<< Updated upstream
   SheetActive(data: any) {
     console.log("SelectChange");
   }
@@ -83,16 +73,11 @@ class App {
       });
     promise.then((e => { console.log(e); }))
     console.log(this.Application);
-=======
-      });*/
-
->>>>>>> Stashed changes
   }
 }
 
 
 
-<<<<<<< Updated upstream
 
 window.onload = () => {
   let result = window.location.search.substring(1).match(/\&*code=([^&]*)/);
@@ -106,31 +91,8 @@ window.onload = () => {
   }
   else {
     /*console.log(result)*/
-    const data = null;
-    const xhr = new XMLHttpRequest();
-    
-    xhr.withCredentials = true;
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === this.DONE) {
-        console.log(this.responseText);
 
 
-      }
-    });
-    console.log("https://developer.kdocs.cn/api/v1/oauth2/access_token?code="+result[1]+"&app_id="+appID+"&app_key="+appKey);
-    xhr.open("GET", "https://developer.kdocs.cn/api/v1/oauth2/access_token?code="+result[1]+"&app_id="+appID+"&app_key="+appKey);
-    xhr.setRequestHeader("Access-Control-Allow-Origin","*");
-    xhr.setRequestHeader("Access-Control-Allow-Origin-Credentials","true");
-    xhr.setRequestHeader("Access-Control-Allow-Origin-methods","*");
-    
-    xhr.send(data);
-  }
-
-  //let app = new App()
-}
-
-=======
->>>>>>> Stashed changes
 /*
 
 var promise = new Promise(function (resolve, reject) {
