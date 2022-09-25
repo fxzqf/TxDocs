@@ -46,6 +46,24 @@ class App {
     });
   }
 }
+
+
+window.onload = () => {
+  let result = window.location.search.substring(1).match(/\&*code=([^&]*)/);
+  const appID="AK20220806RAKOHP";
+  const appKey="opgsyipxflxziyyyvoqsafazqymfqyzu";
+  if (result == null) {
+    
+    const scope="user_basic,access_personal_files,edit_personal_files";
+    const redirect_uri="https://fxzqf.github.io/kdocs/";
+    window.location.href = "https://developer.kdocs.cn/h5/auth?app_id="+appID+"&scope="+scope+"&redirect_uri="+redirect_uri+"&state=state";
+  }
+  else {
+    console.log(result)
+  }
+}
+
+
     /*this.wps.iframe.onload1 = () => {
       this.Config.url = this.wps.iframe.src;
      
@@ -75,18 +93,6 @@ class App {
 
 
 
-window.onload = () => {
-  let result = window.location.search.substring(1).match(/\&*code=([^&]*)/);
-  const appID="AK20220806RAKOHP";
-  const appKey="opgsyipxflxziyyyvoqsafazqymfqyzu";
-  if (result == null) {
-    
-    const scope="user_basic,access_personal_files,edit_personal_files";
-    const redirect_uri="https://fxzqf.github.io/kdocs/";
-    window.location.href = "https://developer.kdocs.cn/h5/auth?app_id="+appID+"&scope="+scope+"&redirect_uri="+redirect_uri+"&state=state";
-  }
-  else {
-    console.log(result)
 
 
 
