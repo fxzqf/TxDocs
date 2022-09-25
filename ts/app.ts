@@ -10,7 +10,7 @@ class App {
   private wps: IWps;
   constructor() {
 
-    this.Config.url = "https://pub.kdocs.cn/t/tdBZKjV3I4IJCNO";
+    this.Config.url = "https://pub.kdocs.cn/t/tdBowy4sSm1yRsJ";
     this.Config.mount = document.getElementsByClassName("custom-mount")[0] as HTMLElement;
     this.Config.commonOptions = {
       isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
@@ -20,11 +20,24 @@ class App {
       isBrowserViewFullscreen: false
     }
     this.Config.onHyperLinkOpen = (linkData) => {
+<<<<<<< Updated upstream
       this.wps.iframe.src = linkData.linkUrl;
       console.log(linkData.linkUrl);
+=======
+      this.Config.url = linkData.linkUrl;
+      this.wps = WebOfficeSDK.config(this.Config);
+      this.wps.ready().then((e: EtApplication) => {
+        this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", ()=>{console.log("SheetActive")});
+        this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", ()=>{console.log("Sheetchnn")});
+        return e.ActiveWorkbook.GetOperatorsInfo();
+      })
+      console.log("Link:" + linkData.linkUrl);
+>>>>>>> Stashed changes
     }
-    this.Config.onToast = (toastData) => { console.log(toastData.action); }
+    this.Config.onToast = (toastData) => { console.log("Toast:" + toastData.action); }
+    this.wps=WebOfficeSDK.config(this.Config);
 
+<<<<<<< Updated upstream
     this.wps = WebOfficeSDK.config(this.Config);
     this.wps.iframe.onload = () => { alert(this.wps.iframe.src); }
     this.wps.iframe.onclick = () => { alert(this.wps.iframe.src); }
@@ -42,8 +55,23 @@ class App {
       alert(this);
     });
   }
+=======
+    //this.wps.ApiEvent.AddApiEventListener("error:", (data) => { console.log("error: ", data); });
+>>>>>>> Stashed changes
 
+    /*this.wps.iframe.onload1 = () => {
+      this.Config.url = this.wps.iframe.src;
+     
+      console.log("Onload");
+      this.wps.ready().then((e: EtApplication) => {
+        this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
+        this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", this.SelectChange);
+        return e.ActiveWorkbook.GetOperatorsInfo();
+      }).then((e) => {
+        console.log(e.response);
+      }).catch((e) => {
 
+<<<<<<< Updated upstream
   SheetActive(data: any) {
     console.log("SelectChange");
   }
@@ -55,11 +83,16 @@ class App {
       });
     promise.then((e => { console.log(e); }))
     console.log(this.Application);
+=======
+      });*/
+
+>>>>>>> Stashed changes
   }
 }
 
 
 
+<<<<<<< Updated upstream
 
 window.onload = () => {
   let result = window.location.search.substring(1).match(/\&*code=([^&]*)/);
@@ -96,6 +129,8 @@ window.onload = () => {
   //let app = new App()
 }
 
+=======
+>>>>>>> Stashed changes
 /*
 
 var promise = new Promise(function (resolve, reject) {
