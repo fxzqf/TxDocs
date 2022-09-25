@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <meta http-equiv="Access-Control-Allow-Origin",content="*">
+  <meta http-equiv="Access-Control-Allow-Origin" ,content="*">
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>在线表格</title>
   <style>
@@ -32,25 +32,10 @@
   <script src="./js/web-office-sdk-v1.1.19.umd.js"></script>
   <script src="./js/athon.js"></script>
   <script src="./js/app.js"></script>
-<<<<<<< Updated upstream
-=======
   <script>window.onload = () => {
-      window.App = new App();
-      function loadScript(url, func) {
-        var head = document.head || document.getElementsByTagName('head')[0];
-        var script = document.createElement('script');
-        script.src = url;
-        script.onload = script.onreadystatechange = function () {
-          if (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') {
-            func();
-            script.onload = script.onreadystatechange = null;
-          }
-        };
-        head.insertBefore(script, null);
-      }
-      loadScript('http://suggestion.baidu.com/su?wd=w', function () { console.log('loaded'); });
-    }</script>
->>>>>>> Stashed changes
+      new App();
+    }
+  </script>
 </body>
 
 </html>

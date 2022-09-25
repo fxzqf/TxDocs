@@ -1,8 +1,4 @@
 ///<reference path="../js/weboffice.d.ts"/>
-function abc() {
-
-}
-
 class App {
 
   private Config: IConfig = {};
@@ -40,8 +36,8 @@ class App {
     this.wps.ready().then((e: EtApplication) => {
       this.Application = e;
       alert(this);
-      this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
-      this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", this.SelectChange);
+      //this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
+      //this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", this.SelectChange);
       return e.ActiveWorkbook.GetOperatorsInfo();
     }).then((e) => {
       console.log(e.response);
@@ -49,7 +45,7 @@ class App {
       alert(this);
     });
   }
-
+}
     /*this.wps.iframe.onload1 = () => {
       this.Config.url = this.wps.iframe.src;
      
@@ -90,10 +86,9 @@ window.onload = () => {
     window.location.href = "https://developer.kdocs.cn/h5/auth?app_id="+appID+"&scope="+scope+"&redirect_uri="+redirect_uri+"&state=state";
   }
   else {
-    /*console.log(result)*/
+    console.log(result)
 
 
-/*
 
 var promise = new Promise(function (resolve, reject) {
     setTimeout(function () {
@@ -123,5 +118,4 @@ if (!this.jssdk.iframeReady) this.jssdk.iframe.src = "https://account.wps.cn/?qr
 
 get Application(): any {
   return (async () => {return await this.jssdk.Application;})()
-}
-*/
+}*/
