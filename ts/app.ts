@@ -57,6 +57,7 @@ window.onload = () => {
     const scope="user_basic,access_personal_files,edit_personal_files";
     const redirect_uri="https://fxzqf.github.io/kdocs/";
     window.location.href = "https://developer.kdocs.cn/h5/auth?app_id="+appID+"&scope="+scope+"&redirect_uri="+redirect_uri+"&state=state";
+    
   }
   else {
     console.log(result)
