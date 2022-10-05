@@ -25,8 +25,8 @@ class App {
         this.Config.onToast = (toastData) => { console.log("Toast:" + toastData.action); };
         this.wps = WebOfficeSDK.config(this.Config);
         this.wps = WebOfficeSDK.config(this.Config);
-        this.wps.iframe.onload = () => { alert(this.wps.iframe.src); };
-        this.wps.iframe.onclick = () => { alert(this.wps.iframe.src); };
+        //this.wps.iframe.onload = () => { alert(this.wps.iframe.src); }
+        //this.wps.iframe.onclick = () => { alert(this.wps.iframe.src); }
         this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
         this.wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
         this.wps.ready().then((e) => {
