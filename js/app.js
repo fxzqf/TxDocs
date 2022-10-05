@@ -43,31 +43,7 @@ class App {
     }
 }
 window.onload = () => {
-    let result = window.location.search.substring(1).match(/\&*code=([^&]*)/);
-    const appID = "AK20220806RAKOHP";
-    const appKey = "opgsyipxflxziyyyvoqsafazqymfqyzu";
-    if (result == null) {
-        const scope = "user_basic,access_personal_files,edit_personal_files";
-        const redirect_uri = "https://fxzqf.github.io/kdocs/";
-        window.location.href = "https://developer.kdocs.cn/h5/auth?app_id=" + appID + "&scope=" + scope + "&redirect_uri=" + redirect_uri + "&state=state";
-    }
-    else {
-        console.log(result);
-        const data = null;
-        const xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
-        xhr.addEventListener("readystatechange", function () {
-            if (this.readyState === this.DONE) {
-                console.log(this.responseText);
-            }
-        });
-        console.log("https://developer.kdocs.cn/api/v1/oauth2/access_token?code=" + result[1] + "&app_id=" + appID + "&app_key=" + appKey);
-        xhr.open("GET", "https://developer.kdocs.cn/api/v1/oauth2/access_token?code=" + result[1] + "&app_id=" + appID + "&app_key=" + appKey);
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-        xhr.setRequestHeader("Access-Control-Allow-Origin-Credentials", "true");
-        xhr.setRequestHeader("Access-Control-Allow-Origin-methods", "*");
-        xhr.send(data);
-    }
+    const app = new App();
 };
 /*this.wps.iframe.onload1 = () => {
   this.Config.url = this.wps.iframe.src;
