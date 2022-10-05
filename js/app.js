@@ -31,14 +31,14 @@ class App {
         this.wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
         this.wps.ready().then((e) => {
             this.Application = e;
-            alert(this);
+            //alert(this);
             //this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
             //this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", this.SelectChange);
             return e.ActiveWorkbook.GetOperatorsInfo();
         }).then((e) => {
             console.log(e.response);
         }).catch((e) => {
-            alert(this);
+            //alert(this);
         });
     }
 }
