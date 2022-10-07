@@ -6,7 +6,7 @@ class App {
   private wps: IWps;
   constructor() {
 
-    this.Config.url = "https://kdocs.cn/l/cpAKayUmlic2";
+    this.Config.url = "https://www.kdocs.cn/l/chA1sndTP9oM";
     this.Config.mount = document.getElementsByClassName("custom-mount")[0] as HTMLElement;
     this.Config.commonOptions = {
       isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
@@ -29,8 +29,6 @@ class App {
     this.wps=WebOfficeSDK.config(this.Config);
 
     this.wps = WebOfficeSDK.config(this.Config);
-    //this.wps.iframe.onload = () => { alert(this.wps.iframe.src); }
-    //this.wps.iframe.onclick = () => { alert(this.wps.iframe.src); }
     this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
     this.wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
     this.wps.ready().then((e: EtApplication) => {
@@ -44,13 +42,13 @@ class App {
     }).catch((e) => {
       //alert(this);
     });
-    if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://kdocs.cn/l/cpAKayUmlic2";
+    if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://www.kdocs.cn/l/chA1sndTP9oM";
   }
 }
 let app;
 
 window.onload = () => {
-  app=new App();
+ app=new App();
 }
 
 
