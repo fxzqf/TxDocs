@@ -3,7 +3,9 @@
 class App {
   
 
-  private Config: IConfig = {};
+  private Config: IConfig = {
+
+  };
   public Application: any;
   private wps: IWps;
   constructor() {
@@ -29,22 +31,17 @@ class App {
     }
     this.Config.onToast = (toastData) => { console.log("Toast:" + toastData.action); }
     this.wps=WebOfficeSDK.config(this.Config);
-
-    this.wps = WebOfficeSDK.config(this.Config);
     this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
     this.wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
-    this.wps.ready().then((e: EtApplication) => {
+    this.wps.ready().then((e) => {
       this.Application = e;
-      //alert(this);
-      //this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", this.SheetActive);
-      //this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", this.SelectChange);
       return e.ActiveWorkbook.GetOperatorsInfo();
     }).then((e) => {
       console.log(e.response);
     }).catch((e) => {
       //alert(this);
     });
-    if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://www.kdocs.cn/l/cs6bvgzIYfim";
+    //if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://www.kdocs.cn/l/cs6bvgzIYfim";
   }
 }
 let app;
@@ -52,6 +49,9 @@ let app;
 window.onload = () => {
  app=new App();
 }
+
+
+
 
 
     /*this.wps.iframe.onload1 = () => {

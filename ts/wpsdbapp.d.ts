@@ -1,0 +1,5 @@
+namespace wps{
+    interface DbApplication {
+        
+    }
+}
