@@ -20,10 +20,6 @@ class App {
         wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
         wps.ready().then((e) => {
             Application = e;
-            return e.ActiveWorkbook.GetOperatorsInfo();
-        }).then((e) => {
-            console.log(e.response);
-        }).catch((e) => {
         });
     }
 }
