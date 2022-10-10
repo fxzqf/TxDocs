@@ -19,8 +19,12 @@ class App {
         wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
         wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
         wps.ready().then((e) => {
-            Application = e;
+            window.Application = e;
+            wps.ApiEvent.AddApiEventListener("SelectionChange", this.SelectionChange);
         });
+    }
+    SelectionChange(data) {
+        console.log("SelectChange");
     }
 }
 var Application;

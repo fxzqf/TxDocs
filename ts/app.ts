@@ -3,10 +3,10 @@
 class App {
     private Config: IConfig = {
         url: "https://www.kdocs.cn/office/d/185296924351",
-        mount : document.getElementsByClassName("custom-mount")[0] as HTMLElement,
-        onHyperLinkOpen : (linkData) => { console.log("Link:" + linkData.linkUrl); },
-        onToast : (toastData) => { console.log("Toast:" + toastData.action); },
-        commonOptions : {
+        mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
+        onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
+        onToast: (toastData) => { console.log("Toast:" + toastData.action); },
+        commonOptions: {
             isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
             isShowHeader: false, // 隐藏头部区域
             isIframeViewFullscreen: false,
@@ -19,12 +19,12 @@ class App {
         wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
         wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
         wps.ready().then((e) => {
-            Application = e;
-            
-            
+            window.Application = e;
+            wps.ApiEvent.AddApiEventListener("SelectionChange", this.SelectionChange);
         });
-
-
+    }
+    SelectionChange(data: any) {
+        console.log("SelectChange");
     }
 }
 var Application: any;
