@@ -1,6 +1,5 @@
 "use strict";
-///<reference path="../js/weboffice.d.ts"/>
-///<reference path="wpsdbapp.d.ts"/>
+///<reference path="./weboffice.d.ts"/>
 class App {
     constructor() {
         this.Config = {};
@@ -83,7 +82,7 @@ promise.then((e)=>{alert(e)});
 
 this.jssdk = WebOfficeSDK.config({
 url: "https://www.kdocs.cn/l/cagNbUYJX08f?R=%2FS%2F4",
-
+ 
 mount: document.getElementsByClassName("custom-mount")[0] as HTMLElement,
 onHyperLinkOpen: async (obj: { linkUrl: string }) => {
 console.log(obj.linkUrl);
