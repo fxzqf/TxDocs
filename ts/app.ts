@@ -3,7 +3,7 @@
 class App {
   
 
-  private Config: IConfig = {
+  public Config: IConfig = {
 
   };
   public Application: any;
@@ -47,7 +47,9 @@ class App {
 let app;
 
 window.onload = () => {
- app=new App();
+   
+ 
+  //app=new App();
 }
 
 

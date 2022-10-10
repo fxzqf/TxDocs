@@ -40,7 +40,7 @@ class App {
 }
 let app;
 window.onload = () => {
-    app = new App();
+    //app=new App();
 };
 /*this.wps.iframe.onload1 = () => {
   this.Config.url = this.wps.iframe.src;
