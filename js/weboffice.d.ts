@@ -376,7 +376,10 @@ interface IFlag {
 }
 
 type TGetClipboardData = () => clipboardData | Promise<clipboardData>
-
+namespace WPS{
+  function config(e:IConfig):IWps;
+  function listener(e, o, a, s, c, u, l):any;
+}
 
 declare var WebOfficeSDK: {
   config: (conf: IConfig) => IWps;

@@ -30,7 +30,7 @@ class App {
       console.log("Link:" + linkData.linkUrl);
     }
     this.Config.onToast = (toastData) => { console.log("Toast:" + toastData.action); }
-    this.wps=WebOfficeSDK.config(this.Config);
+    this.wps=WPS.config(this.Config);
     this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
     this.wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
     this.wps.ready().then((e) => {
@@ -49,7 +49,7 @@ let app;
 window.onload = () => {
    
  
-  //app=new App();
+  app=new App();
 }
 
 
