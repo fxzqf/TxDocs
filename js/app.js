@@ -4,7 +4,7 @@
 class App {
     constructor() {
         this.Config = {};
-        this.Config.url = "https://www.kdocs.cn/l/cs6bvgzIYfim";
+        this.Config.url = "https://www.kdocs.cn/office/d/185296924351";
         this.Config.mount = document.getElementsByClassName("custom-mount")[0];
         this.Config.commonOptions = {
             isShowTopArea: true,
