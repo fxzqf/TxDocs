@@ -1,11 +1,13 @@
 ///<reference path="../js/weboffice.d.ts"/>
+///<reference path="wpsdbapp.d.ts"/>
 class App {
+  
 
   private Config: IConfig = {};
   public Application: any;
   private wps: IWps;
   constructor() {
-
+  
     this.Config.url = "https://www.kdocs.cn/l/cs6bvgzIYfim";
     this.Config.mount = document.getElementsByClassName("custom-mount")[0] as HTMLElement;
     this.Config.commonOptions = {
