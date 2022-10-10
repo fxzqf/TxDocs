@@ -1,46 +1,38 @@
 ///<reference path="./weboffice.d.ts"/>
 
 class App {
+    private Config: IConfig = {
+        url: "https://www.kdocs.cn/office/d/185296924351",
+        mount : document.getElementsByClassName("custom-mount")[0] as HTMLElement,
+        onHyperLinkOpen : (linkData) => { console.log("Link:" + linkData.linkUrl); },
+        onToast : (toastData) => { console.log("Toast:" + toastData.action); },
+        commonOptions : {
+            isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
+            isShowHeader: false, // 隐藏头部区域
+            isIframeViewFullscreen: false,
+            isParentFullscreen: false,
+            isBrowserViewFullscreen: false
+        }
+    };
+    constructor() {
+        const wps = WPS.config(this.Config);
+        wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
+        wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
+        wps.ready().then((e) => {
+            Application = e;
+            return e.ActiveWorkbook.GetOperatorsInfo();
+        }).then((e) => {
+            console.log(e.response);
+        }).catch((e) => {
+            
+        });
 
 
-  public Config: IConfig = {
-
-  };
-  public Application: any;
-  private wps: WPS.IWps;
-  constructor() {
-
-    this.Config.url = "https://www.kdocs.cn/office/d/185296924351";
-    this.Config.mount = document.getElementsByClassName("custom-mount")[0] as HTMLElement;
-    this.Config.commonOptions = {
-      isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
-      isShowHeader: false, // 隐藏头部区域
-      isIframeViewFullscreen: false,
-      isParentFullscreen: false,
-      isBrowserViewFullscreen: false
     }
-    this.Config.onHyperLinkOpen = (linkData) => {console.log("Link:" + linkData.linkUrl);}
-    this.Config.onToast = (toastData) => { console.log("Toast:" + toastData.action); }
-    this.wps = WPS.config(this.Config);
-    this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
-    this.wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
-    this.wps.ready().then((e) => {
-      this.Application = e;
-      return e.ActiveWorkbook.GetOperatorsInfo();
-    }).then((e) => {
-      console.log(e.response);
-    }).catch((e) => {
-      //alert(this);
-    });
-    //if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://www.kdocs.cn/l/cs6bvgzIYfim";
-  }
 }
-let app;
-
+var Application: any;
 window.onload = () => {
-
-
-  app = new App();
+    new App();
 }
 
 
@@ -48,6 +40,7 @@ window.onload = () => {
 
 
 /*this.wps.iframe.onload1 = () => {
+  if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://www.kdocs.cn/l/cs6bvgzIYfim";
   this.Config.url = this.wps.iframe.src;
  
   console.log("Onload");

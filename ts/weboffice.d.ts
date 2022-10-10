@@ -133,8 +133,8 @@ interface IWppOptions {
 */
 interface IOtlOptions {
     /**
-     * 加载项配置
-     */
+    * 加载项配置
+    */
     loadOptions?: string
     /**
      * 光标是否聚焦
@@ -378,7 +378,7 @@ declare namespace WPS {
         updateConfig(configData: { commandBars?: Array<IWpsCommandBars> }): Promise<void>
         executeCommandBar: (id: string) => void
     }
-
+    
 
     function config(e: IConfig): IWps;
 
