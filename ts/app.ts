@@ -10,7 +10,7 @@ class App {
   private wps: IWps;
   constructor() {
   
-    this.Config.url = "https://www.kdocs.cn/l/cs6bvgzIYfim";
+    this.Config.url = "https://www.kdocs.cn/office/d/185296924351";
     this.Config.mount = document.getElementsByClassName("custom-mount")[0] as HTMLElement;
     this.Config.commonOptions = {
       isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）

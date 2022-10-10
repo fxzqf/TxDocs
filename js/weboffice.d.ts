@@ -342,8 +342,8 @@ interface IWps {
   WppApplication?: () => any
   PPTApplication?: () => any
   PDFApplication?: () => any
+  DBApplication?:()=>any
   Application: any
-
   setToken: (tokenData: { token: string, timeout?: number, hasRefreshTokenConfig: boolean }) => Promise<any>
   setCommandBars: (args: Array<IWpsCommandBars>) => Promise<void>
   tabs: {
