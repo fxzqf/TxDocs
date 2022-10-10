@@ -308,7 +308,9 @@ interface IWpsCommandBarAttr {
 interface IWpsCommandBarObjectAttr {
     [propName: string]: any
 }
-/** */
+/**
+ * Excel应用程序
+ */
 interface EtApplication {
     Range: any,
     Public: any,
@@ -319,52 +321,6 @@ interface EtApplication {
     ActiveSheet: {
         Name: string
     }
-}
-/**
-* D.IWPS 定义
-*/
-
-interface IWps {
-
-    version: string
-    url: string
-    iframe: HTMLIFrameElement
-    Enum?: any, // 即将废弃
-    Events?: any, // 即将废弃
-    Props?: string
-    mainVersion?: string
-    ready: () => Promise<any>
-    destroy: () => Promise<any>
-    WpsApplication?: () => any
-    WordApplication?: () => any
-    EtApplication?: () => any
-    ExcelApplication?: () => any
-    WppApplication?: () => any
-    PPTApplication?: () => any
-    PDFApplication?: () => any
-    DBApplication?: () => any
-    Application: any
-    setToken: (tokenData: { token: string, timeout?: number, hasRefreshTokenConfig: boolean }) => Promise<any>
-    setCommandBars: (args: Array<IWpsCommandBars>) => Promise<void>
-    tabs: {
-        getTabs: () => Promise<Array<{ tabKey: number, text: string }>>
-        switchTab: (tabKey: number) => Promise<any>,
-    }
-    setCooperUserColor: (usersInfo: Array<{ userId: string, color: string }>) => Promise<any>
-    tokenData?: { token: string } | null
-    commandBars?: Array<IWpsCommandBars> | null
-    iframeReady?: boolean
-    save: () => Promise<any>
-    on: (eventName: string, handle: (event?: any) => void) => void
-    off: (eventName: string, handle: (event?: any) => void) => void
-    ApiEvent: {
-        AddApiEventListener: (eventName: string, handle: (event?: any) => void) => void
-        RemoveApiEventListener: (eventName: string, handle: (event?: any) => void) => void
-    }
-    Stack?: any
-    Free?: (objId: any) => Promise<any>
-    updateConfig(configData: { commandBars?: Array<IWpsCommandBars> }): Promise<void>
-    executeCommandBar: (id: string) => void
 }
 
 interface IFlag {
@@ -378,7 +334,52 @@ interface IFlag {
 type TGetClipboardData = () => clipboardData | Promise<clipboardData>
 
 declare namespace WPS {
-    
+    /**
+     * WPS接口定义
+     */
+    interface IWps {
+        version: string
+        url: string
+        iframe: HTMLIFrameElement
+        Enum?: any, // 即将废弃
+        Events?: any, // 即将废弃
+        Props?: string
+        mainVersion?: string
+        ready: () => Promise<any>
+        destroy: () => Promise<any>
+        WpsApplication?: () => any
+        WordApplication?: () => any
+        EtApplication?: () => any
+        ExcelApplication?: () => any
+        WppApplication?: () => any
+        PPTApplication?: () => any
+        PDFApplication?: () => any
+        DBApplication?: () => any
+        Application: any
+        setToken: (tokenData: { token: string, timeout?: number, hasRefreshTokenConfig: boolean }) => Promise<any>
+        setCommandBars: (args: Array<IWpsCommandBars>) => Promise<void>
+        tabs: {
+            getTabs: () => Promise<Array<{ tabKey: number, text: string }>>
+            switchTab: (tabKey: number) => Promise<any>,
+        }
+        setCooperUserColor: (usersInfo: Array<{ userId: string, color: string }>) => Promise<any>
+        tokenData?: { token: string } | null
+        commandBars?: Array<IWpsCommandBars> | null
+        iframeReady?: boolean
+        save: () => Promise<any>
+        on: (eventName: string, handle: (event?: any) => void) => void
+        off: (eventName: string, handle: (event?: any) => void) => void
+        ApiEvent: {
+            AddApiEventListener: (eventName: string, handle: (event?: any) => void) => void
+            RemoveApiEventListener: (eventName: string, handle: (event?: any) => void) => void
+        }
+        Stack?: any
+        Free?: (objId: any) => Promise<any>
+        updateConfig(configData: { commandBars?: Array<IWpsCommandBars> }): Promise<void>
+        executeCommandBar: (id: string) => void
+    }
+
+
     function config(e: IConfig): IWps;
 
     function listener(e, o, a, s, c, u, l): any;

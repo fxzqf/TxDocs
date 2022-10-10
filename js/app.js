@@ -12,16 +12,7 @@ class App {
             isParentFullscreen: false,
             isBrowserViewFullscreen: false
         };
-        this.Config.onHyperLinkOpen = (linkData) => {
-            this.Config.url = linkData.linkUrl;
-            this.wps = WebOfficeSDK.config(this.Config);
-            this.wps.ready().then((e) => {
-                this.wps.ApiEvent.AddApiEventListener("Worksheet_Activate", () => { console.log("SheetActive"); });
-                this.wps.ApiEvent.AddApiEventListener("Worksheet_SelectionChange", () => { console.log("Sheetchnn"); });
-                return e.ActiveWorkbook.GetOperatorsInfo();
-            });
-            console.log("Link:" + linkData.linkUrl);
-        };
+        this.Config.onHyperLinkOpen = (linkData) => { console.log("Link:" + linkData.linkUrl); };
         this.Config.onToast = (toastData) => { console.log("Toast:" + toastData.action); };
         this.wps = WPS.config(this.Config);
         this.wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
