@@ -17,7 +17,9 @@ var wps;
 window.onload = async () => {
   wps= WPS.config(Config);
   //wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
-  wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data.reason); });
+  wps.ApiEvent.AddApiEventListener("error", (data) => { 
+    console.log("error: ", data.reason); 
+});
   wps.ready().then((e)=>{
     Application=e;
     Application.Sheet.GetSheets().then((r:any)=>{console.log(r)})
@@ -36,7 +38,7 @@ window.onload = async () => {
 /*
 
   this.wps.iframe.onload1 = () => {
-  if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://www.kdocs.cn/l/cs6bvgzIYfim";
+  if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps%3A%2F%2Fwww.kdocs.cn%2Foffice%2Fd%2F185296924351";
   this.Config.url = this.wps.iframe.src;
  
   console.log("Onload");
