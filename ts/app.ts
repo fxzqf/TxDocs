@@ -14,7 +14,7 @@ const Config: IConfig = {
 };
 var Application: DBApplication;
 var wps: any;
-window.onload = async () => {
+window.onload = () => {
     wps = WPS.config(Config);
     wps.ApiEvent.AddApiEventListener("fileOpen", (data: any) => {
         if(data.success){

@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 ///<reference path="./weboffice.d.ts"/>
 const Config = {
     url: "https://www.kdocs.cn/office/d/185296924351",
@@ -24,7 +15,7 @@ const Config = {
 };
 var Application;
 var wps;
-window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
+window.onload = () => {
     wps = WPS.config(Config);
     wps.ApiEvent.AddApiEventListener("fileOpen", (data) => {
         if (data.success) {
@@ -41,7 +32,7 @@ window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
     function SelectionChange(data) {
         console.log("SelectChange");
     }
-});
+};
 /*
 
   this.wps.iframe.onload1 = () => {
