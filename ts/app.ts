@@ -21,12 +21,14 @@ window.onload = async () => {
             wps.ready().then((e: DBApplication) => {
                 Application = e;
                 Application.Sheet.GetSheets().then((r: any) => { console.log(r) })
+
             });
+
         }
     });
     wps.ApiEvent.AddApiEventListener("error", (data: any) => {
         if (data.reason == "userNotLogin")
-            wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253D" +encodeURI(Config.url);
+            wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253D" +Config.url;
     });
     
     function SelectionChange(data: any) {
