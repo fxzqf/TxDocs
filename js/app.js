@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 ///<reference path="./weboffice.d.ts"/>
 const Config = {
-    url: "https://www.kdocs.cn/l/cs6bvgzIYfim",
+    url: "https://appdocs.wpscdn.cn/office/d/chh4aITYcm37?_w_tokentype=1&disablePlugins=true",
     mount: document.getElementById("#custom-mount"),
     onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
@@ -21,30 +21,31 @@ const Config = {
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
     },
-    debug: true
-};
-var wps1;
-window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
-    Config.refreshToken = () => {
+    refreshToken: () => {
         // 自身业务处理...
         // 可以返回 Promise 或者 return { token, timeout }
         return Promise.resolve({
-            token: 'ExchangeToken-ohfbcfulndyrdaxglgphjyivobybtilyjciekevqksozfyke',
+            token: 'ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh',
             timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
         });
-    };
-    wps1 = WPS.config(Config);
+    }
+};
+var wps1;
+window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
+    wps1 = yield WPS.config(Config);
+    wps1.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
     wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     wps1.ApiEvent.AddApiEventListener("error", error);
     function error(data) {
-        console.log(data);
+        //wps1.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps%3A%2F%2Ffxzqf.github.io%2Fkdocs%2F";
+        alert("Error");
+        //console.log(data);
         //wps1.iframe.src = "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351";
     }
     yield wps1.ready();
     function fileOpen(data) {
-        console.log(data);
-        if (data.success) {
-        }
+        //wps1.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps%3A%2F%2Ffxzqf.github.io%2Fkdocs%2F";
+        alert("Open");
     }
     function SelectionChange(data) {
         console.log("SelectChange");
