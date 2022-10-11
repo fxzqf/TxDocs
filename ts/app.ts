@@ -1,35 +1,38 @@
 ///<reference path="./weboffice.d.ts"/>
 const Config: IConfig = {
-  url: "https://www.kdocs.cn/office/d/185296924351",
-  mount: document.getElementById("#custom-mount") as HTMLElement,
-  onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
-  onToast: (toastData) => { console.log("Toast:" + toastData.action); },
-  commonOptions: {
-    isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
-    isShowHeader: false, // 隐藏头部区域
-    isIframeViewFullscreen: false,
-    isParentFullscreen: false,
-    isBrowserViewFullscreen: false
-  }
+    url: "https://www.kdocs.cn/office/d/185296924351",
+    mount: document.getElementById("#custom-mount") as HTMLElement,
+    onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
+    onToast: (toastData) => { console.log("Toast:" + toastData.action); },
+    commonOptions: {
+        isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
+        isShowHeader: false, // 隐藏头部区域
+        isIframeViewFullscreen: false,
+        isParentFullscreen: false,
+        isBrowserViewFullscreen: false
+    }
 };
 var Application: DBApplication;
-var wps:any;
+var wps: any;
 window.onload = async () => {
-  wps= WPS.config(Config);
-  //wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
-  wps.ApiEvent.AddApiEventListener("error", (data:any) => { 
-    if(data.reason=="userNotLogin")
-    wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253D"+Config.url; 
-    //console.log("error: ", data.reason); 
-});
-  wps.ready().then((e:DBApplication)=>{
-    Application=e;
-    Application.Sheet.GetSheets().then((r:any)=>{console.log(r)})
-  });
-  
-  function SelectionChange(data: any) {
-    console.log("SelectChange");
-  }
+    wps = WPS.config(Config);
+    wps.ApiEvent.AddApiEventListener("fileOpen", (data: any) => {
+        if(data.success){
+            wps.ready().then((e: DBApplication) => {
+                Application = e;
+                Application.Sheet.GetSheets().then((r: any) => { console.log(r) })
+            });
+        }
+    });
+    wps.ApiEvent.AddApiEventListener("error", (data: any) => {
+        if (data.reason == "userNotLogin")
+            wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253D" + Config.url;
+        //console.log("error: ", data.reason); 
+    });
+    
+    function SelectionChange(data: any) {
+        console.log("SelectChange");
+    }
 
 }
 
