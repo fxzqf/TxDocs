@@ -19,7 +19,7 @@ const Config: IConfig = {
           token: 'ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh', // 必需：你需要设置的 token
           timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
         });
-      };
+      }
     
 };
 var wps1:WPS.IWps;
