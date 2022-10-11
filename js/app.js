@@ -1,7 +1,16 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 ///<reference path="./weboffice.d.ts"/>
 const Config = {
-    url: "https://www.kdocs.cn/office/d/185296924351",
+    url: "https://www.kdocs.cn/l/cs6bvgzIYfim",
     mount: document.getElementById("#custom-mount"),
     onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
@@ -11,10 +20,19 @@ const Config = {
         isIframeViewFullscreen: false,
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
-    }
+    },
+    debug: true
 };
 var wps1;
-window.onload = () => {
+window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
+    Config.refreshToken = () => {
+        // 自身业务处理...
+        // 可以返回 Promise 或者 return { token, timeout }
+        return Promise.resolve({
+            token: 'ExchangeToken-ohfbcfulndyrdaxglgphjyivobybtilyjciekevqksozfyke',
+            timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
+        });
+    };
     wps1 = WPS.config(Config);
     wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     wps1.ApiEvent.AddApiEventListener("error", error);
@@ -22,9 +40,7 @@ window.onload = () => {
         console.log(data);
         //wps1.iframe.src = "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351";
     }
-    wps1.ready().then((e) => {
-        //Application.Sheet.GetSheets().then((r: any) => { console.log(r) })
-    });
+    yield wps1.ready();
     function fileOpen(data) {
         console.log(data);
         if (data.success) {
@@ -33,7 +49,7 @@ window.onload = () => {
     function SelectionChange(data) {
         console.log("SelectChange");
     }
-};
+});
 /*
 
   this.wps.iframe.onload1 = () => {

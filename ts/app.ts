@@ -1,6 +1,6 @@
 ///<reference path="./weboffice.d.ts"/>
 const Config: IConfig = {
-    url: "https://www.kdocs.cn/office/d/185296924351",
+    url: "https://www.kdocs.cn/l/cs6bvgzIYfim",
     mount: document.getElementById("#custom-mount") as HTMLElement,
     onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
@@ -10,11 +10,24 @@ const Config: IConfig = {
         isIframeViewFullscreen: false,
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
-    }
+    },
+    debug:true
+    
 };
 var wps1:WPS.IWps;
-window.onload = () => {
+window.onload =async () => {
+    Config.refreshToken= () => {
+        // 自身业务处理...
+      
+        // 可以返回 Promise 或者 return { token, timeout }
+        return Promise.resolve({
+          token: 'ExchangeToken-ohfbcfulndyrdaxglgphjyivobybtilyjciekevqksozfyke', // 必需：你需要设置的 token
+          timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
+        });
+      };
     wps1 = WPS.config(Config);
+    
+    
     wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     wps1.ApiEvent.AddApiEventListener("error", error);
     
@@ -22,12 +35,8 @@ window.onload = () => {
         console.log(data);
         //wps1.iframe.src = "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351";
     }
-    wps1.ready().then((e: DBApplication) => {
-        
-        //Application.Sheet.GetSheets().then((r: any) => { console.log(r) })
-        
-
-    });
+    await wps1.ready();
+    
     function fileOpen(data: any) {
         console.log(data);
         if (data.success) {
