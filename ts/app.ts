@@ -1,6 +1,6 @@
 ///<reference path="./weboffice.d.ts"/>
 const Config: IConfig = {
-    url: "https://developer.kdocs.cn/h5/auth?app_id=AK20220805VGESRU&scope=edit_personal_files&redirect_uri=https://www.kdocs.cn/office/d/185296924351",
+    url: "https://www.kdocs.cn/office/d/185296924351",
     mount: document.getElementById("#custom-mount") as HTMLElement,
     onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
