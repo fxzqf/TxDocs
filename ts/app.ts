@@ -13,15 +13,16 @@ const Config: IConfig = {
   }
 };
 var Application: DBApplication;
-window.onload = () => {
-  const wps = WPS.config(Config);
+var wps;
+window.onload = async () => {
+  wps= WPS.config(Config);
   wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
   wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
-  wps.ready().then((e) => {
-    window.Application = e;
-    Application.Sub.SelectionChange=SelectionChange;
-    //wps.ApiEvent.AddApiEventListener("SelectionChange", SelectionChange);
+  wps.ready().then((e)=>{
+    Application=e;
+    Application.Sheet.GetSheets().then((r:any)=>{console.log(r)})
   });
+  
   function SelectionChange(data: any) {
     console.log("SelectChange");
   }
@@ -32,7 +33,9 @@ window.onload = () => {
 
 
 
-/*this.wps.iframe.onload1 = () => {
+/*
+
+  this.wps.iframe.onload1 = () => {
   if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://www.kdocs.cn/l/cs6bvgzIYfim";
   this.Config.url = this.wps.iframe.src;
  

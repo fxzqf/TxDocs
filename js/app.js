@@ -1,37 +1,44 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 ///<reference path="./weboffice.d.ts"/>
-class App {
-    constructor() {
-        this.Config = {
-            url: "https://www.kdocs.cn/office/d/185296924351",
-            mount: document.getElementsByClassName("custom-mount")[0],
-            onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
-            onToast: (toastData) => { console.log("Toast:" + toastData.action); },
-            commonOptions: {
-                isShowTopArea: true,
-                isShowHeader: false,
-                isIframeViewFullscreen: false,
-                isParentFullscreen: false,
-                isBrowserViewFullscreen: false
-            }
-        };
-        const wps = WPS.config(this.Config);
-        wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
-        wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
-        wps.ready().then((e) => {
-            window.Application = e;
-            wps.ApiEvent.AddApiEventListener("SelectionChange", this.SelectionChange);
-        });
+const Config = {
+    url: "https://www.kdocs.cn/office/d/185296924351",
+    mount: document.getElementById("#custom-mount"),
+    onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
+    onToast: (toastData) => { console.log("Toast:" + toastData.action); },
+    commonOptions: {
+        isShowTopArea: true,
+        isShowHeader: false,
+        isIframeViewFullscreen: false,
+        isParentFullscreen: false,
+        isBrowserViewFullscreen: false
     }
-    SelectionChange(data) {
+};
+var Application;
+var wps;
+window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
+    wps = WPS.config(Config);
+    wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
+    wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
+    wps.ready().then((e) => {
+        Application = e;
+        Application.Sheet.GetSheets().then((r) => { console.log(r); });
+    });
+    function SelectionChange(data) {
         console.log("SelectChange");
     }
-}
-var Application;
-window.onload = () => {
-    new App();
-};
-/*this.wps.iframe.onload1 = () => {
+});
+/*
+
+  this.wps.iframe.onload1 = () => {
   if (!this.wps.iframeReady) this.wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps://www.kdocs.cn/l/cs6bvgzIYfim";
   this.Config.url = this.wps.iframe.src;
  

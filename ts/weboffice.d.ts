@@ -418,9 +418,10 @@ interface DBApplication {
         set SelectionChange(e:(e)=>any)
         set SwitchCommandBar(e:(e)=>any)
         set TransactChange(e:(e)=>any)
-        set :iewDataUpdate(e:(e)=>any)
+        set ViewDataUpdate(e:(e)=>any)
         set ViewTypeChanged(e:(e)=>any)
     }
+    Sheet:any;
 }
 
 interface IFlag {
