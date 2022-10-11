@@ -26,8 +26,8 @@ var Application;
 var wps;
 window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
     wps = WPS.config(Config);
-    wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
-    wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
+    //wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
+    wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data.reason); });
     wps.ready().then((e) => {
         Application = e;
         Application.Sheet.GetSheets().then((r) => { console.log(r); });

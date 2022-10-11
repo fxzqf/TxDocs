@@ -16,8 +16,8 @@ var Application: DBApplication;
 var wps;
 window.onload = async () => {
   wps= WPS.config(Config);
-  wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
-  wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data); });
+  //wps.ApiEvent.AddApiEventListener("fileOpen", (data) => { console.log("fileOpen: ", data); });
+  wps.ApiEvent.AddApiEventListener("error", (data) => { console.log("error: ", data.reason); });
   wps.ready().then((e)=>{
     Application=e;
     Application.Sheet.GetSheets().then((r:any)=>{console.log(r)})
