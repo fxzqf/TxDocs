@@ -33,7 +33,7 @@ const Config = {
 var wps1;
 window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
     wps1 = yield WPS.config(Config);
-    wps1.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
+    //wps1.setToken({token:"ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh",timeout:10*60*100,hasRefreshTokenConfig:false});
     wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     wps1.ApiEvent.AddApiEventListener("error", error);
     function error(data) {
@@ -47,6 +47,38 @@ window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log("SelectChange");
     }
 });
+/**
+ * app_id=AK20220805VGESRU&app_key=lriwnltnwsirgzoqtkpjsfxqnnuyxjws
+ * {
+"fname": "数据表.dbt",
+"fsize": 19943,
+"ftype": "sharefile",
+"fver": 16,
+"ctime": 1654050615,
+-"group": {
+"open_id": "zFrXRGNOrqx9FVQe-RqwrFnVsPAw8v0yCHStd_m5tIk",
+"union_id": "9SCG3-zYX3kBOgCldE6-O1nVsPAw8v0yCHStd_m5tIk"
+},
+-"parent": {
+"open_id": "zFrXRGNOrqx9FVQe-RqwrGWVt6BaxGyuB-PjwVzY8nw",
+"union_id": "9SCG3-zYX3kBOgCldE6-O2WVt6BaxGyuB-PjwVzY8nw"
+},
+-"id": {
+"open_id": "zFrXRGNOrqx9FVQe-RqwrNhyIFefOCTNGum23gpgsOo",
+"union_id": "9SCG3-zYX3kBOgCldE6-O9hyIFefOCTNGum23gpgsOo"
+}
+},
+ * {
+"code": 0,
+-"data": {
+"app_id": "AK20220805VGESRU",
+"access_token": "lczMxKEXCBDNtscfWbfHhGtXQNgMUCiW",
+"expires_in": 86400,
+"refresh_token": "HulCynFwTjiTbAaDfAAWBjQVcxKFDlIH"
+},
+"result": "ok"
+}
+ */
 /*
 
   this.wps.iframe.onload1 = () => {
