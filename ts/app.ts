@@ -12,17 +12,17 @@ const Config: IConfig = {
         isBrowserViewFullscreen: false
     }
 };
-var wps:WPS.IWps;
+var wps1:WPS.IWps;
 window.onload = () => {
-    wps = WPS.config(Config);
-    wps.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
-    wps.ApiEvent.AddApiEventListener("error", error);
+    wps1 = WPS.config(Config);
+    wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
+    wps1.ApiEvent.AddApiEventListener("error", error);
     
     function error(data: any) {
         console.log(data);
-        wps.iframe.src = "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351";
+        wps1.iframe.src = "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351";
     }
-    wps.ready().then((e: DBApplication) => {
+    wps1.ready().then((e: DBApplication) => {
         
         //Application.Sheet.GetSheets().then((r: any) => { console.log(r) })
         
