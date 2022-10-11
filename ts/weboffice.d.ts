@@ -322,6 +322,106 @@ interface EtApplication {
         Name: string
     }
 }
+interface DBApplication {
+    Enmu: {
+        DbSheetFieldType: {
+            Attachment: "Attachment"
+            AutoNumber: "AutoNumber"
+            CellPicture: "CellPicture"
+            Checkbox: "Checkbox"
+            Complete: "Complete"
+            Contact: "Contact"
+            CreatedBy: "CreatedBy"
+            CreatedTime: "CreatedTime"
+            Currency: "Currency"
+            Date: "Date"
+            Email: "Email"
+            Formula: "Formula"
+            ID: "ID"
+            Invalid: "Invalid"
+            Link: "Link"
+            Lookup: "Lookup"
+            MultiLineText: "MultiLineText"
+            MultipleSelect: "MultipleSelect"
+            Note: "Note"
+            Number: "Number"
+            Percentage: "Percentage"
+            Phone: "Phone"
+            Rating: "Rating"
+            SingleLineText: "SingleLineText"
+            SingleSelect: "SingleSelect"
+            Time: "Time"
+            Url: "Url"
+        }
+        KsoControlType: {
+            ksoControlButton: 1
+        }
+        MsoControlType: {
+            msoControlButton: 1,
+            msoControlPopup: 10
+        }
+        RenderItem: {
+            ColHeaderAddBtn: 'colHeaderAddBtn',
+            ColHeaderMenuBtn: 'colHeaderMenuBtn',
+            RowHeaderExpand: 'rowHeaderExpand'
+        }
+        RowHeightType: {
+            Short: 'Short',
+            Medium: 'Medium',
+            Tall: 'Tall',
+            ExtraTall: 'ExtraTall'
+        }
+        ViewType: {
+            Form: "Form"
+            Gallery: "Gallery"
+            Gantt: "Gantt"
+            Grid: "Grid"
+            Kanban: "Kanban"
+        }
+    }
+    Events: {
+        Blur: "Blur"
+        DocumentSaveStatus: "DocumentSaveStatus"
+        FilterConditionChange: "FilterConditionChange"
+        Focus: "Focus"
+        GalleryResize: "GalleryResize"
+        GroupFoldStatusChanged: "GroupFoldStatusChanged"
+        KanbanResize: "KanbanResize"
+        Keypress: "Keypress"
+        ModelVisible: "ModelVisible"
+        OnBroadcast: "OnBroadcast"
+        OnDocViewChange: "OnDocViewChange"
+        Scroll: "Scroll"
+        SecurityDocChangeReconnect: "SecurityDocChangeReconnect"
+        SecurityDocPermissionChange: "SecurityDocPermissionChange"
+        SelectionChange: "SelectionChange"
+        SwitchCommandBar: "SwitchCommandBar"
+        TransactChange: "TransactChange"
+        ViewDataUpdate: "ViewDataUpdate"
+        ViewTypeChanged: "ViewTypeChanged"
+    }
+    Sub: {
+        set Blur(e:(e)=>any)
+        set DocumentSa(e:(e)=>any)
+        set FilterConditionChange(e:(e)=>any)
+        set Focus(e:(e)=>any)
+        set GalleryResize(e:(e)=>any)
+        set GroupFoldStatusChanged(e:(e)=>any)
+        set KanbanResize(e:(e)=>any)
+        set Keypress(e:(e)=>any)
+        set Model(e:(e)=>any)
+        set OnBroadcast(e:(e)=>any)
+        set OnDoc(e:(e)=>any)
+        set Scroll(e:(e)=>any)
+        set SecurityDocChangeReconnect(e:(e)=>any)
+        set SecurityDocPermissionChange(e:(e)=>any)
+        set SelectionChange(e:(e)=>any)
+        set SwitchCommandBar(e:(e)=>any)
+        set TransactChange(e:(e)=>any)
+        set :iewDataUpdate(e:(e)=>any)
+        set ViewTypeChanged(e:(e)=>any)
+    }
+}
 
 interface IFlag {
     apiReadySended: boolean,
@@ -354,7 +454,7 @@ declare namespace WPS {
         WppApplication?: () => any
         PPTApplication?: () => any
         PDFApplication?: () => any
-        DBApplication?: () => any
+        DBApplication?: () => DBApplication
         Application: any
         setToken: (tokenData: { token: string, timeout?: number, hasRefreshTokenConfig: boolean }) => Promise<any>
         setCommandBars: (args: Array<IWpsCommandBars>) => Promise<void>
@@ -378,7 +478,7 @@ declare namespace WPS {
         updateConfig(configData: { commandBars?: Array<IWpsCommandBars> }): Promise<void>
         executeCommandBar: (id: string) => void
     }
-    
+
 
     function config(e: IConfig): IWps;
 
