@@ -1,7 +1,7 @@
 "use strict";
 ///<reference path="./weboffice.d.ts"/>
 const Config = {
-    url: "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351",
+    url: "https://developer.kdocs.cn/h5/auth?app_id=AK20220805VGESRU&scope=edit_personal_files&redirect_uri=https://www.kdocs.cn/office/d/185296924351",
     mount: document.getElementById("#custom-mount"),
     onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
@@ -20,7 +20,7 @@ window.onload = () => {
     wps1.ApiEvent.AddApiEventListener("error", error);
     function error(data) {
         console.log(data);
-        wps1.iframe.src = "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351";
+        //wps1.iframe.src = "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351";
     }
     wps1.ready().then((e) => {
         //Application.Sheet.GetSheets().then((r: any) => { console.log(r) })
