@@ -1,6 +1,6 @@
 ///<reference path="./weboffice.d.ts"/>
 const Config: IConfig = {
-    url: "https://www.kdocs.cn/office/d/185296924351",
+    url: "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351",
     mount: document.getElementById("#custom-mount") as HTMLElement,
     onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
@@ -12,23 +12,24 @@ const Config: IConfig = {
         isBrowserViewFullscreen: false
     }
 };
-var Application: DBApplication;
-var wps;
+var wps:WPS.IWps;
 window.onload = () => {
     wps = WPS.config(Config);
-    //wps.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
-    //wps.ApiEvent.AddApiEventListener("error", error);
+    wps.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
+    wps.ApiEvent.AddApiEventListener("error", error);
     
     function error(data: any) {
-        //if (data.reason == "userNotLogin") wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253D" + Config.url;
+        console.log(data);
+        wps.iframe.src = "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351";
     }
     wps.ready().then((e: DBApplication) => {
-        Application = e;
+        
         //Application.Sheet.GetSheets().then((r: any) => { console.log(r) })
         
 
     });
     function fileOpen(data: any) {
+        console.log(data);
         if (data.success) {
            
         }

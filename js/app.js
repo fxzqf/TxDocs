@@ -1,8 +1,7 @@
 "use strict";
 ///<reference path="./weboffice.d.ts"/>
 const Config = {
-     url:"https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253Dhttps%3A%2F%2Ffxzqf.github.io%2Fkdocs%2F",
-   // url: "https://www.baidu.com",
+    url: "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351",
     mount: document.getElementById("#custom-mount"),
     onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
@@ -14,23 +13,20 @@ const Config = {
         isBrowserViewFullscreen: false
     }
 };
-var Application;
 var wps;
 window.onload = () => {
     wps = WPS.config(Config);
-
-    //wps.iframe.src = "https://www.kdocs.cn/office/d/185296924351";
-
-    //wps.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
-    //wps.ApiEvent.AddApiEventListener("error", error);
+    wps.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
+    wps.ApiEvent.AddApiEventListener("error", error);
     function error(data) {
-        //if (data.reason == "userNotLogin") wps.iframe.src = "https://account.wps.cn/?qrcode=kdocs&logo=kdocs&accessid=AK20210823OPGONG&from=v1-web-kdocs-login&cb=https%3A%2F%2Faccount.wps.cn%2Fapi%2Fv3%2Fsession%2Fcorrelate%2Fredirect%3Ft%3D1661241340991%26appid%3D375024576%26cb%3Dhttps%253A%252F%252Fwww.kdocs.cn%252FsingleSign4CST%253Fcb%253D" + Config.url;
+        console.log(data);
+        wps.iframe.src = "https://account.wps.cn/?cb=https://www.kdocs.cn/office/d/185296924351";
     }
     wps.ready().then((e) => {
-        Application = e;
         //Application.Sheet.GetSheets().then((r: any) => { console.log(r) })
     });
     function fileOpen(data) {
+        console.log(data);
         if (data.success) {
         }
     }
@@ -101,4 +97,4 @@ if (!this.jssdk.iframeReady) this.jssdk.iframe.src = "https://account.wps.cn/?qr
 
 get Application(): any {
 return (async () => {return await this.jssdk.Application;})()
-}*/
+}*/ 
