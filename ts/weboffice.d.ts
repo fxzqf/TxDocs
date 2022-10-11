@@ -401,44 +401,44 @@ interface DBApplication {
         ViewTypeChanged: "ViewTypeChanged"
     }
     Sub: {
-        set Blur(e: (e) => any)
-        set DocumentSa(e: (e) => any)
-        set FilterConditionChange(e: (e) => any)
-        set Focus(e: (e) => any)
-        set GalleryResize(e: (e) => any)
-        set GroupFoldStatusChanged(e: (e) => any)
-        set KanbanResize(e: (e) => any)
-        set Keypress(e: (e) => any)
-        set Model(e: (e) => any)
-        set OnBroadcast(e: (e) => any)
-        set OnDoc(e: (e) => any)
-        set Scroll(e: (e) => any)
-        set SecurityDocChangeReconnect(e: (e) => any)
-        set SecurityDocPermissionChange(e: (e) => any)
-        set SelectionChange(e: (e) => any)
-        set SwitchCommandBar(e: (e) => any)
-        set TransactChange(e: (e) => any)
-        set ViewDataUpdate(e: (e) => any)
-        set ViewTypeChanged(e: (e) => any)
+        Blur:(e)=>{};
+        DocumentSa:(e)=>{};
+         FilterConditionChange: (e) => any;
+         Focus: (e) => any;
+         GalleryResize: (e) => any;
+         GroupFoldStatusChanged: (e) => any;
+         KanbanResize: (e) => any;
+         Keypress: (e) => any;
+         Model: (e) => any;
+         OnBroadcast: (e) => any;
+         OnDoc: (e) => any;
+         Scroll: (e) => any;
+         SecurityDocChangeReconnect: (e) => any;
+         SecurityDocPermissionChange: (e) => any;
+         SelectionChange: (e) => any;
+        SwitchCommandBar:(e) => any;
+        TransactChange:(e) => any;
+        ViewDataUpdate:(e) => any;
+        ViewTypeChanged:(e) => any;
     }
-    ActiveDBSheet:any
-    CommandBars:any
-    Components:any
-    DocViewState:any
-    Field:any
-    FileInfo:any
-    For:any
-    Off:any
-    Panes:any
-    Public:any
-    Record:any
-    Selection:any
-    SetDocView:any
-    Sheet:any
-    TypeName:any
-    UserAgent:any
-    View:any
-    WhenStacksEmpty:any
+    ActiveDBSheet: any;
+    CommandBars: any;
+    Components: any;
+    DocViewState: any;
+    Field: any;
+    FileInfo: any;
+    For: any;
+    Off: any;
+    Panes: any;
+    Public: any;
+    Record: any;
+    Selection: any;
+    SetDocView: any;
+    Sheet: any;
+    TypeName: any;
+    UserAgent: any;
+    View: any;
+    WhenStacksEmpty: any;
 }
 
 interface IFlag {
