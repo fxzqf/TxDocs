@@ -33,7 +33,7 @@ const Config = {
 var wps1;
 window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
     wps1 = yield WPS.config(Config);
-    //wps1.setToken({token:"ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh",timeout:10*60*100,hasRefreshTokenConfig:false});
+    wps1.setToken({token:"ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh",timeout:10*60*100,hasRefreshTokenConfig:false});
     wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     wps1.ApiEvent.AddApiEventListener("error", error);
     function error(data) {
