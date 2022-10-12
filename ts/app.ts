@@ -36,7 +36,7 @@ window.onload = () => {
     wps1.ready();
 
     function fileOpen(data: any) {
-        alert("Open");
+        console.log("Open");
     }
     function SelectionChange(data: any) {
         console.log("SelectChange");
