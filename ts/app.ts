@@ -25,7 +25,7 @@ const Config: IConfig = {
 var wps1:WPS.IWps;
 window.onload =async () => {
     wps1 =await WPS.config(Config);
-    //wps1.setToken({token:"ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh",timeout:10*60*100,hasRefreshTokenConfig:false});
+    wps1.setToken({token:"ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh",timeout:10*60*100,hasRefreshTokenConfig:false});
 
     wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     wps1.ApiEvent.AddApiEventListener("error", error);
