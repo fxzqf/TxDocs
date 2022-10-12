@@ -11,30 +11,30 @@ const Config: IConfig = {
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
     },
-    refreshToken :() => {
+    refreshToken: () => {
         // 自身业务处理...
-      
+
         // 可以返回 Promise 或者 return { token, timeout }
         return Promise.resolve({
-          token: 'ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh', // 必需：你需要设置的 token
-          timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
+            token: 'ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh', // 必需：你需要设置的 token
+            timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
         });
-      }
-    
+    }
+
 };
-var wps1:WPS.IWps;
-window.onload =async () => {
-    wps1 =await WPS.config(Config);
-    wps1.setToken({token:"ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh",timeout:10*60*100,hasRefreshTokenConfig:false});
+var wps1: WPS.IWps;
+window.onload = () => {
+    wps1 = WPS.config(Config);
+    wps1.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
 
     wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     wps1.ApiEvent.AddApiEventListener("error", error);
-    
+
     function error(data: any) {
         alert("Error");
     }
-    await wps1.ready();
-    
+    wps1.ready();
+
     function fileOpen(data: any) {
         alert("Open");
     }
