@@ -2,13 +2,13 @@
 ///<reference path="./weboffice.d.ts"/>
 const Config = {
     //url: "https://appdocs.wpscdn.cn/office/d/chh4aITYcm37?_w_tokentype=1&disablePlugins=true",
-    url: "https://www.kdocs.cn/l/chh4aITYcm37?R=%2FS%2F1",
+    url: "https://www.kdocs.cn/office/d/174089867899?share_id=G0YPHGrBGgAm64",
     mount: document.getElementById("#custom-mount"),
     onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
     commonOptions: {
         isShowTopArea: true,
-        isShowHeader: false,
+        isShowHeader: true,
         isIframeViewFullscreen: false,
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
@@ -21,24 +21,25 @@ window.onload = () => {
     //APP.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
     APP.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     APP.ApiEvent.AddApiEventListener("error", error);
+    APP.ready().then((e) => {
+        APP.ApiEvent.AddApiEventListener("OnBroadcast", OnBroadcast);
+        APP.ApiEvent.AddApiEventListener("ViewDataUpdate", ViewDataUpdate);
+        APP.ApiEvent.AddApiEventListener("SelectionChange", SelectionChange);
+    });
     function error(data) {
         alert("Error");
     }
     function fileOpen(data) {
-        console.log("Open");
+        console.log(data.fileInfo);
     }
-    APP.ready();
-    APP.ApiEvent.AddApiEventListener("OnBroadcast", OnBroadcast);
-    APP.ApiEvent.AddApiEventListener("ViewDataUpdate", ViewDataUpdate);
-    APP.Application.Public.SendBroadcast({ message: '测试' }, "304052046");
     function OnBroadcast(data) {
         console.log(data);
     }
     function ViewDataUpdate(data) {
-        console.log("ViewDataUpdate");
+        console.log(data);
     }
     function SelectionChange(data) {
-        console.log("SelectChange");
+        console.log(data);
     }
 };
 /**

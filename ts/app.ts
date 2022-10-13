@@ -1,14 +1,13 @@
 ///<reference path="./weboffice.d.ts"/>
 const Config: IConfig = {
     //url: "https://appdocs.wpscdn.cn/office/d/chh4aITYcm37?_w_tokentype=1&disablePlugins=true",
-    url: "https://www.kdocs.cn/l/chh4aITYcm37?R=%2FS%2F1",
+    url: "https://www.kdocs.cn/office/d/174089867899?share_id=G0YPHGrBGgAm64",
     mount: document.getElementById("#custom-mount") as HTMLElement,
-    onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
-
+    onHyperLinkOpen: (linkData) => {console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
     commonOptions: {
-        isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
-        isShowHeader: false, // 隐藏头部区域
+        isShowTopArea:true, // 隐藏顶部区域（头部和工具栏）
+        isShowHeader: true, // 隐藏头部区域
         isIframeViewFullscreen: false,
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
@@ -20,31 +19,29 @@ var APP: WPS.IWps;
 window.onload = () => {
     APP = WPS.config(Config);
     //APP.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
-
+    
     APP.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     APP.ApiEvent.AddApiEventListener("error", error);
-
+    APP.ready().then((e:DBApplication)=>{
+        APP.ApiEvent.AddApiEventListener("OnBroadcast", OnBroadcast);
+        APP.ApiEvent.AddApiEventListener("ViewDataUpdate", ViewDataUpdate);
+        APP.ApiEvent.AddApiEventListener("SelectionChange", SelectionChange);
+    });
     function error(data: any) {
         alert("Error");
     }
     function fileOpen(data: any) {
-        console.log("Open");
+        console.log(data.fileInfo);
     }
-    APP.ready();
-    APP.ApiEvent.AddApiEventListener("OnBroadcast", OnBroadcast);
-    APP.ApiEvent.AddApiEventListener("ViewDataUpdate", ViewDataUpdate);
-    APP.Application.Public.SendBroadcast({ message: '测试' },"304052046")
     function OnBroadcast(data: any) {
         console.log(data);
     }
     function ViewDataUpdate(data: any) {
-        console.log("ViewDataUpdate");
+        console.log(data);
     }
-    
     function SelectionChange(data: any) {
-        console.log("SelectChange");
+        console.log(data);
     }
-
 }
 
 

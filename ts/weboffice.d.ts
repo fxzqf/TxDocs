@@ -312,7 +312,7 @@ interface IWpsCommandBarObjectAttr {
 /**
  * Excel应用程序
  */
-interface EtApplication {
+declare interface EtApplication {
     Range: any,
     Public: any,
     ActiveWorkbook: {
