@@ -1,16 +1,8 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 ///<reference path="./weboffice.d.ts"/>
 const Config = {
-    url: "https://appdocs.wpscdn.cn/office/d/chh4aITYcm37?_w_tokentype=1&disablePlugins=true",
+    //url: "https://appdocs.wpscdn.cn/office/d/chh4aITYcm37?_w_tokentype=1&disablePlugins=true",
+    url: "https://www.kdocs.cn/l/chh4aITYcm37?R=%2FS%2F1",
     mount: document.getElementById("#custom-mount"),
     onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
@@ -21,32 +13,34 @@ const Config = {
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
     },
-    refreshToken: () => {
-        // 自身业务处理...
-        // 可以返回 Promise 或者 return { token, timeout }
-        return Promise.resolve({
-            token: 'ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh',
-            timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
-        });
-    }
+    dbOptions: { isShowFeedback: true },
 };
-var wps1;
-window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
-    wps1 = yield WPS.config(Config);
-    wps1.setToken({token:"ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh",timeout:10*60*100,hasRefreshTokenConfig:false});
-    wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
-    wps1.ApiEvent.AddApiEventListener("error", error);
+var APP;
+window.onload = () => {
+    APP = WPS.config(Config);
+    //APP.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
+    APP.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
+    APP.ApiEvent.AddApiEventListener("error", error);
     function error(data) {
         alert("Error");
     }
-    yield wps1.ready();
     function fileOpen(data) {
-        alert("Open");
+        console.log("Open");
+    }
+    APP.ready();
+    APP.ApiEvent.AddApiEventListener("OnBroadcast", OnBroadcast);
+    APP.ApiEvent.AddApiEventListener("ViewDataUpdate", ViewDataUpdate);
+    APP.Application.Public.SendBroadcast({ message: '测试' }, "304052046");
+    function OnBroadcast(data) {
+        console.log(data);
+    }
+    function ViewDataUpdate(data) {
+        console.log("ViewDataUpdate");
     }
     function SelectionChange(data) {
         console.log("SelectChange");
     }
-});
+};
 /**
  * app_id=AK20220805VGESRU&app_key=lriwnltnwsirgzoqtkpjsfxqnnuyxjws
  * {
@@ -142,4 +136,4 @@ if (!this.jssdk.iframeReady) this.jssdk.iframe.src = "https://account.wps.cn/?qr
 
 get Application(): any {
 return (async () => {return await this.jssdk.Application;})()
-}*/ 
+}*/
