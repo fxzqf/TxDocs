@@ -1,47 +1,47 @@
 ///<reference path="./weboffice.d.ts"/>
 const Config: IConfig = {
-    url: "https://appdocs.wpscdn.cn/office/d/chh4aITYcm37?_w_tokentype=1&disablePlugins=true",
+    //url: "https://appdocs.wpscdn.cn/office/d/chh4aITYcm37?_w_tokentype=1&disablePlugins=true",
+    url: "https://www.kdocs.cn/office/d/174089867899?share_id=G0YPHGrBGgAm64",
     mount: document.getElementById("#custom-mount") as HTMLElement,
-    onHyperLinkOpen: (linkData) => { console.log("Link:" + linkData.linkUrl); },
+    onHyperLinkOpen: (linkData) => {console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
     commonOptions: {
-        isShowTopArea: true, // 隐藏顶部区域（头部和工具栏）
-        isShowHeader: false, // 隐藏头部区域
+        isShowTopArea:true, // 隐藏顶部区域（头部和工具栏）
+        isShowHeader: true, // 隐藏头部区域
         isIframeViewFullscreen: false,
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
     },
-    refreshToken: () => {
-        // 自身业务处理...
-
-        // 可以返回 Promise 或者 return { token, timeout }
-        return Promise.resolve({
-            token: 'ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh', // 必需：你需要设置的 token
-            timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
-        });
-    }
+    dbOptions: { isShowFeedback: true },
 
 };
-var wps1: WPS.IWps;
+var APP: WPS.IWps;
 window.onload = () => {
-    wps1 = WPS.config(Config);
-    wps1.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
-
-    wps1.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
-    wps1.ApiEvent.AddApiEventListener("error", error);
-
+    APP = WPS.config(Config);
+    //APP.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
+    
+    APP.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
+    APP.ApiEvent.AddApiEventListener("error", error);
+    APP.ready().then((e:DBApplication)=>{
+        APP.ApiEvent.AddApiEventListener("OnBroadcast", OnBroadcast);
+        APP.ApiEvent.AddApiEventListener("ViewDataUpdate", ViewDataUpdate);
+        APP.ApiEvent.AddApiEventListener("SelectionChange", SelectionChange);
+    });
     function error(data: any) {
         alert("Error");
     }
-    wps1.ready();
-
     function fileOpen(data: any) {
-        console.log("Open");
+        console.log(data.fileInfo);
+    }
+    function OnBroadcast(data: any) {
+        console.log(data);
+    }
+    function ViewDataUpdate(data: any) {
+        console.log(data);
     }
     function SelectionChange(data: any) {
-        console.log("SelectChange");
+        console.log(data);
     }
-
 }
 
 

@@ -256,6 +256,7 @@ interface IConfig {
     refreshToken?: () => tokenData | Promise<tokenData>
     // 获取外部粘贴数据
     getClipboardData?: () => clipboardData | Promise<clipboardData>
+
     onToast?: (toastData: { msg: string, action: string }) => void
     onHyperLinkOpen?: (linkData: { linkUrl: string }) => void
     cooperUserAttribute?: {
@@ -311,7 +312,7 @@ interface IWpsCommandBarObjectAttr {
 /**
  * Excel应用程序
  */
-interface EtApplication {
+declare interface EtApplication {
     Range: any,
     Public: any,
     ActiveWorkbook: {
@@ -322,7 +323,7 @@ interface EtApplication {
         Name: string
     }
 }
-interface DBApplication {
+declare interface DBApplication {
     Enmu: {
         DbSheetFieldType: {
             Attachment: "Attachment"
@@ -401,25 +402,25 @@ interface DBApplication {
         ViewTypeChanged: "ViewTypeChanged"
     }
     Sub: {
-        Blur:(e)=>{};
-        DocumentSa:(e)=>{};
-         FilterConditionChange: (e) => any;
-         Focus: (e) => any;
-         GalleryResize: (e) => any;
-         GroupFoldStatusChanged: (e) => any;
-         KanbanResize: (e) => any;
-         Keypress: (e) => any;
-         Model: (e) => any;
-         OnBroadcast: (e) => any;
-         OnDoc: (e) => any;
-         Scroll: (e) => any;
-         SecurityDocChangeReconnect: (e) => any;
-         SecurityDocPermissionChange: (e) => any;
-         SelectionChange: (e) => any;
-        SwitchCommandBar:(e) => any;
-        TransactChange:(e) => any;
-        ViewDataUpdate:(e) => any;
-        ViewTypeChanged:(e) => any;
+        Blur: (e) => {};
+        DocumentSa: (e) => {};
+        FilterConditionChange: (e) => any;
+        Focus: (e) => any;
+        GalleryResize: (e) => any;
+        GroupFoldStatusChanged: (e) => any;
+        KanbanResize: (e) => any;
+        Keypress: (e) => any;
+        Model: (e) => any;
+        OnBroadcast: (e) => any;
+        OnDoc: (e) => any;
+        Scroll: (e) => any;
+        SecurityDocChangeReconnect: (e) => any;
+        SecurityDocPermissionChange: (e) => any;
+        SelectionChange: (e) => any;
+        SwitchCommandBar: (e) => any;
+        TransactChange: (e) => any;
+        ViewDataUpdate: (e) => any;
+        ViewTypeChanged: (e) => any;
     }
     ActiveDBSheet: any;
     CommandBars: any;
@@ -472,7 +473,7 @@ declare namespace WPS {
         WppApplication?: () => any
         PPTApplication?: () => any
         PDFApplication?: () => any
-        DBApplication?: () => DBApplication
+        DBApplication:DBApplication
         Application: any
         setToken: (tokenData: { token: string, timeout?: number, hasRefreshTokenConfig: boolean }) => Promise<any>
         setCommandBars: (args: Array<IWpsCommandBars>) => Promise<void>
