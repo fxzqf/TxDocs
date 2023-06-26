@@ -1,5 +1,4 @@
 "use strict";
-///<reference path="./weboffice.d.ts"/>
 const Config = {
     //url: "https://appdocs.wpscdn.cn/office/d/chh4aITYcm37?_w_tokentype=1&disablePlugins=true",
     url: "https://www.kdocs.cn/office/d/174089867899?share_id=G0YPHGrBGgAm64",
@@ -17,7 +16,7 @@ const Config = {
 };
 var APP;
 window.onload = () => {
-    APP = WPS.config(Config);
+    APP = WebOfficeSDK.config(Config);
     //APP.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
     APP.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     APP.ApiEvent.AddApiEventListener("error", error);

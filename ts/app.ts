@@ -1,28 +1,27 @@
-///<reference path="./weboffice.d.ts"/>
-const Config: IConfig = {
+const Config: WebOffice.IConfig = {
     //url: "https://appdocs.wpscdn.cn/office/d/chh4aITYcm37?_w_tokentype=1&disablePlugins=true",
     url: "https://www.kdocs.cn/office/d/174089867899?share_id=G0YPHGrBGgAm64",
     mount: document.getElementById("#custom-mount") as HTMLElement,
     onHyperLinkOpen: (linkData) => {console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
     commonOptions: {
-        isShowTopArea:true, // 隐藏顶部区域（头部和工具栏）
-        isShowHeader: true, // 隐藏头部区域
+        isShowTopArea:true, 
+        isShowHeader: true, 
         isIframeViewFullscreen: false,
         isParentFullscreen: false,
         isBrowserViewFullscreen: false
     },
     dbOptions: { isShowFeedback: true },
-
+    
 };
-var APP: WPS.IWps;
+var APP: WebOffice.IWps;
 window.onload = () => {
-    APP = WPS.config(Config);
+    APP = WebOfficeSDK.config(Config);
     //APP.setToken({ token: "ExchangeToken-xpwxoixbuiesjawzlupntobmogepnelchotwliateumntkgh", timeout: 10 * 60 * 100, hasRefreshTokenConfig: false });
     
     APP.ApiEvent.AddApiEventListener("fileOpen", fileOpen);
     APP.ApiEvent.AddApiEventListener("error", error);
-    APP.ready().then((e:DBApplication)=>{
+    APP.ready().then((e)=>{
         APP.ApiEvent.AddApiEventListener("OnBroadcast", OnBroadcast);
         APP.ApiEvent.AddApiEventListener("ViewDataUpdate", ViewDataUpdate);
         APP.ApiEvent.AddApiEventListener("SelectionChange", SelectionChange);
