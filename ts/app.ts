@@ -5,11 +5,12 @@ const Config: WebOffice.IConfig = {
     onHyperLinkOpen: (linkData) => {console.log("Link:" + linkData.linkUrl); },
     onToast: (toastData) => { console.log("Toast:" + toastData.action); },
     commonOptions: {
-        isShowTopArea:true, 
-        isShowHeader: true, 
+        isShowTopArea:false, 
+        isShowHeader: false, 
         isIframeViewFullscreen: false,
         isParentFullscreen: false,
-        isBrowserViewFullscreen: false
+        isBrowserViewFullscreen: false,
+
     },
     dbOptions: { isShowFeedback: true },
     
