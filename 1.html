@@ -12,7 +12,7 @@
       <h3 id="menu-scan">微信扫一扫</h3>
       <span class="desc">调起微信扫一扫接口</span>
       <button class="btn btn_primary" id="scanQRCode0">scanQRCode(微信处理结果)</button>
-      <button class="btn btn_primary" id="scanQRCode1">scanQRCode(直接返回结果)</button>
+      <button class="btn btn_primary" id="scanQRCode1">scanQRCode(直接返回结果)</button>      
     </div>
   </div>
 </body>
@@ -32,46 +32,12 @@
   wx.config({
       debug: false,
       appId: 'wx8301d806150dba74',
-      timestamp: 1687789026,
+      timestamp: 1687790060,
       nonceStr: 'fxzqf',
-      signature: '62e897ba957d150e6f2c73e0c3a42ef303f52d5d',
+      signature: '739c30b813bdfb6544d79763a162db5cf7592896',
       jsApiList: [
         'checkJsApi',
-        'onMenuShareTimeline',
-        'onMenuShareAppMessage',
-        'onMenuShareQQ',
-        'onMenuShareWeibo',
-        'onMenuShareQZone',
-        'hideMenuItems',
-        'showMenuItems',
-        'hideAllNonBaseMenuItem',
-        'showAllNonBaseMenuItem',
-        'translateVoice',
-        'startRecord',
-        'stopRecord',
-        'onVoiceRecordEnd',
-        'playVoice',
-        'onVoicePlayEnd',
-        'pauseVoice',
-        'stopVoice',
-        'uploadVoice',
-        'downloadVoice',
-        'chooseImage',
-        'previewImage',
-        'uploadImage',
-        'downloadImage',
-        'getNetworkType',
-        'openLocation',
-        'getLocation',
-        'hideOptionMenu',
-        'showOptionMenu',
-        'closeWindow',
-        'scanQRCode',
-        'chooseWXPay',
-        'openProductSpecificView',
-        'addCard',
-        'chooseCard',
-        'openCard'
+        'scanQRCode'
       ]
   });
 </script>

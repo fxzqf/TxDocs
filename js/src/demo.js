@@ -26,6 +26,7 @@ wx.ready(function () {
             }
         });
     };
+
 });
 
 wx.error(function (res) {
