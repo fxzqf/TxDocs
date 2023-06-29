@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="./js/src/web-office-sdk-solution-v1.1.23.umd.js"></script>
+
 </head>
 
 <body ontouchstart="">
     <div class="wxapi_container">
         <div class="lbox_close wxapi_form">
-            <button class="btn btn_primary" id="scanQRCode0">scanQRCode(微信处理结果)</button>
             <button class="btn btn_primary" id="scanQRCode1">scanQRCode(直接返回结果)</button>
         </div>
     </div>
+    <div id="doc1"></div>
 </body>
 
 
@@ -32,41 +33,48 @@
      * 邮件主题：【微信JS-SDK反馈】具体问题
      * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
      */
-    wx.config({
-        debug: false,
-        appId: 'wx8301d806150dba74',
-        timestamp: 1688039776,
-        nonceStr: 'fxzqf',
-        signature: '3a4dabf7b1df8f7c335b8683cf12bfa83a8a7e65',
-        jsApiList: [
-            'checkJsApi',
-            'scanQRCode'
-        ]
-        //3a4dabf7b1df8f7c335b8683cf12bfa83a8a7e65 1688039776
-    });
-    wx.ready(function () {
-
-        // 9 微信原生接口
-        // 9.1.1 扫描二维码并返回结果
-        document.querySelector('#scanQRCode0').onclick = function () {
-            wx.scanQRCode();
-        };
-        // 9.1.2 扫描二维码并返回结果
-        document.querySelector('#scanQRCode1').onclick = function () {
-            wx.scanQRCode({
-                needResult: 1,
-                desc: 'scanQRCode desc',
-                success: function (res) {
-                    alert(JSON.stringify(res));
-                }
+    window.onload = () => {
+        APP = WebOfficeSDK.config({
+            url: "https://www.kdocs.cn/l/cojIiWjTwjYv",
+            mount: document.getElementById("#custom-mount"),
+        });
+        APP.ready().then((e) => {
+            wx.config({
+                debug: false,
+                appId: 'wx8301d806150dba74',
+                timestamp: 1688039776,
+                nonceStr: 'fxzqf',
+                signature: '3a4dabf7b1df8f7c335b8683cf12bfa83a8a7e65',
+                jsApiList: [
+                    'checkJsApi',
+                    'scanQRCode'
+                ]
             });
-        };
+            wx.ready(function () {
 
-    });
+                // 9 微信原生接口
+                // 9.1.1 扫描二维码并返回结果
+                document.querySelector('#scanQRCode0').onclick = function () {
+                    wx.scanQRCode();
+                };
+                // 9.1.2 扫描二维码并返回结果
+                document.querySelector('#scanQRCode1').onclick = function () {
+                    wx.scanQRCode({
+                        needResult: 1,
+                        desc: 'scanQRCode desc',
+                        success: function (res) {
+                            alert(JSON.stringify(res));
+                        }
+                    });
+                };
 
-    wx.error(function (res) {
-        alert(res.errMsg);
-    });
+            });
 
+            wx.error(function (res) {
+                alert(res.errMsg);
+            });
+        })
+    }
 </script>
+
 </html>
