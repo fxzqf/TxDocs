@@ -1,13 +1,14 @@
-let APP1: Et.Application;
-let records:any;
-let sha1=new jsSHA("SHA-1","TEXT");
+"use strict";
+let APP1;
+let records;
+let sha1 = new jsSHA("SHA-1", "TEXT");
 window.onload = () => {
     WebOfficeSDK.config({
         url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
         //url:"https://www.kdocs.cn/l/cojIiWjTwjYv",
-        mount: document.getElementById("custom-mount") as HTMLElement,
+        mount: document.getElementById("custom-mount"),
     }).ready().then((e) => {
-        APP1=e;
+        APP1 = e;
         return APP1.Sheets(5);
     }).then((sheet) => {
         return sheet.Record.GetRecords();
@@ -20,7 +21,6 @@ window.onload = () => {
                 jsticket = recs.records[i].fields.value;
             }
         }
-        
         wx.config({
             debug: false,
             appId: 'wx8301d806150dba74',
@@ -32,23 +32,23 @@ window.onload = () => {
             ]
         });
         wx.ready(function () {
-            wx.error(function (res: any) {
+            wx.error(function (res) {
                 alert(res.errMsg);
             });
         });
-        let qrBt = document.querySelector('#scanQRCode1') as HTMLElement;
+        let qrBt = document.querySelector('#scanQRCode1');
         // 9.1.2 扫描二维码并返回结果
         qrBt.onclick = function () {
             wx.scanQRCode({
                 needResult: 1,
                 desc: 'scanQRCode desc',
-                success: function (res: any) {
-                    APP1.Sheets(2).then((e:any)=>{
-                        e.Record.CreateRecords({Records:[{fields:{"编码":res.resultStr,"名称":"新添加商品"}}]});
-                    })
+                success: function (res) {
+                    APP1.Sheets(2).then((e) => {
+                        e.Record.CreateRecords({ Records: [{ fields: { "编码": res.resultStr, "名称": "新添加商品" } }] });
+                    });
                 }
             });
         };
-        qrBt.innerText = "扫码添加"
+        qrBt.innerText = "扫码添加";
     });
-}
+};
