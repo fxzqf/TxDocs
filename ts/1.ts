@@ -1,6 +1,6 @@
 let APP1: Et.Application;
 let records:any;
-let sha1=new jsSHA("SHA-1","TEXT");
+let sha1=new jsSHA("SHA-1","TEXT",{ encoding: "UTF8" });
 window.onload = () => {
     WebOfficeSDK.config({
         url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
