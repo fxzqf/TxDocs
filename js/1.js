@@ -1,4 +1,3 @@
-"use strict";
 let APP1;
 let records;
 let sha1 = new jsSHA("SHA-1", "TEXT", { encoding: "UTF8" });
@@ -52,3 +51,4 @@ window.onload = () => {
         qrBt.innerText = "扫码添加";
     });
 };
+export {};

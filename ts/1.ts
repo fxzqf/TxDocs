@@ -52,3 +52,4 @@ window.onload = () => {
         qrBt.innerText = "扫码添加"
     });
 }
+export{};
