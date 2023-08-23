@@ -22,10 +22,11 @@ window.onload = () => {
              }
          }*/
     sha1 = new jsSHA("SHA-1", "TEXT", { encoding: "UTF8" });
+    let jsticket = "sM4AOVdWfPE4DxkXGEs8VIg3S6LumlLSveNvpaIZuJnKdc1o2xmlvDn_PspGaQRH2UKGu3odtr94QIgkYodDgw";
     wx.config({
         debug: false,
         appId: 'wx8301d806150dba74',
-        timestamp: Math.trunc(Date.now() / 1000),
+        timestamp: 1692825277,
         nonceStr: 'fxzqf',
         signature: sha1.update("jsapi_ticket=" + jsticket + "&" + "noncestr=fxzqf&" + "timestamp=" + timestamp + "&" + "url=" + window.location.href).getHash("HEX"),
         jsApiList: [
