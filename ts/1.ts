@@ -20,7 +20,6 @@ window.onload = () => {
                 jsticket = recs.records[i].fields.value;
             }
         }
-        
         wx.config({
             debug: false,
             appId: 'wx8301d806150dba74',
