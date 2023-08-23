@@ -1,6 +1,6 @@
 let APP1;
 let records;
-let sha1 = new jsSHA("SHA-1", "TEXT", { encoding: "UTF8" });
+let sha1;
 window.onload = () => {
     /* WebOfficeSDK.config({
          url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
@@ -20,10 +20,11 @@ window.onload = () => {
                  jsticket = recs.records[i].fields.value;
              }
          }*/
+    sha1 = new jsSHA("SHA-1", "TEXT", { encoding: "UTF8" });
     wx.config({
         debug: false,
         appId: 'wx8301d806150dba74',
-        timestamp: timestamp,
+        timestamp: Date.now() / 1000,
         nonceStr: 'fxzqf',
         signature: sha1.update("jsapi_ticket=" + jsticket + "&" + "noncestr=fxzqf&" + "timestamp=" + timestamp + "&" + "url=" + window.location.href).getHash("HEX"),
         jsApiList: [
