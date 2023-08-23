@@ -1,3 +1,4 @@
+"use strict";
 let APP1;
 let records;
 let sha1;
@@ -51,5 +52,4 @@ window.onload = () => {
     };
     qrBt.innerText = "扫码添加";
 };
-;
-export {};
+//export{};
