@@ -24,7 +24,7 @@ window.onload = () => {
         wx.config({
             debug: false,
             appId: 'wx8301d806150dba74',
-            timestamp: Date.now()/1000,
+            timestamp:Math.trunc(Date.now()/1000),
             nonceStr: 'fxzqf',
             signature: sha1.update("jsapi_ticket=" + jsticket + "&" + "noncestr=fxzqf&" + "timestamp=" + timestamp + "&" + "url=" + window.location.href).getHash("HEX"),
             jsApiList: [
