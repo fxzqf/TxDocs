@@ -1,20 +1,11 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 let APP1;
 let records;
 let sha1;
 let code;
 let openid;
 const appId = "AK20220921TSPWLO";
-window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
+window.onload = async () => {
     const instance = WebOfficeSDK.config({
         url: 'https://www.kdocs.cn/office/k/239691124317?_w_tokentype=1',
         mount: document.getElementById("custom-mount"),
@@ -25,7 +16,7 @@ window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
             });
         },
     });
-    yield instance.ready();
+    await instance.ready();
     instance.setToken({
         token: 'ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
         timeout: 10 * 60 * 1000,
@@ -45,7 +36,7 @@ window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
          http.send();
     
      }*/
-});
+};
 //ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca
 /* WebOfficeSDK.config({
         url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
