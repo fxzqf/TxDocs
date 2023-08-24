@@ -6,9 +6,16 @@ const appId = "AK20220921TSPWLO";
 window.onload = () => {
     const oldCode = localStorage.getItem("oldCode");
     const openid = localStorage.getItem("openid");
-    let http = new XMLHttpRequest();
-    const searchParams = new URLSearchParams(location.search);
-    const code = searchParams.get("code");
+    if (oldCode && openid) {
+        let http = new XMLHttpRequest();
+        console.log("DDDD");
+    }
+    else {
+        const searchParams = new URLSearchParams(location.search);
+        const code = searchParams.get("code");
+        if (!code)
+            window.location.href = "https://developer.kdocs.cn/h5/auth?app_id=AK20220921TSPWLO&scope=user_basic&redirect_uri=" + window.location.href;
+    }
     /* WebOfficeSDK.config({
          url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
          //url:"https://www.kdocs.cn/l/cojIiWjTwjYv",
