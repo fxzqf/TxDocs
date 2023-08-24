@@ -17,13 +17,12 @@ window.onload = () => {
         http.open("GET", "https://zhibiao.uicp.fun/edittoken/AK20220921TSPWLO/" + openid + "/" + code, false);
         http.send();
         const instance = WebOfficeSDK.config({
-            url: 'https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw&_w_tokentype=1',
-            refreshToken:():WebOffice.tokenData=>{
-                let tokenData:WebOffice.tokenData={
-                    token: http.responseText,
-                    timeout:7000
-                };
-                return tokenData;
+            url: 'https://www.kdocs.cn/office/k/239691124317?_w_tokentype=1',
+            refreshToken:()=>{
+                return Promise.resolve({
+                    token: http.responseText, // 必需：你需要设置的 token
+                    timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
+                  });
             },
             mount: document.getElementById("custom-mount") as HTMLElement
           })
