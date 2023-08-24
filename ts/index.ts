@@ -5,6 +5,9 @@ const appId="AK20220921TSPWLO";
 window.onload = () => {
     const oldCode=localStorage.getItem("oldCode");
     const openid=localStorage.getItem("openid");
+    let http=new XMLHttpRequest();
+    
+    
     const searchParams = new URLSearchParams(location.search);
     const code = searchParams.get("code");
     
