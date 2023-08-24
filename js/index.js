@@ -5,7 +5,7 @@ let sha1;
 let code;
 let openid;
 const appId = "AK20220921TSPWLO";
-window.onload = async () => {
+window.onload = () => {
     const instance = WebOfficeSDK.config({
         url: 'https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw&_w_tokentype=1',
         mount: document.getElementById("custom-mount"),
@@ -15,7 +15,7 @@ window.onload = async () => {
         timeout: 10 * 60 * 1000,
         hasRefreshTokenConfig: false
     });
-    await instance.ready();
+    //await instance.ready();
     /*
      code = new URLSearchParams(location.search).get("code");
          
