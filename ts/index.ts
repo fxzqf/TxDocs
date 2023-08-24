@@ -2,6 +2,12 @@ let APP1: Et.Application;
 let records:any;
 let sha1:any;
 window.onload = () => {
+    const oldCode=localStorage.getItem("oldCode");
+    const openid=localStorage.getItem("openid");
+    const searchParams = new URLSearchParams(location.search);
+    const code = searchParams.get("code");
+ 
+
    /* WebOfficeSDK.config({
         url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
         //url:"https://www.kdocs.cn/l/cojIiWjTwjYv",
@@ -20,6 +26,7 @@ window.onload = () => {
                 jsticket = recs.records[i].fields.value;
             }
         }*/
+       /*
         sha1=new jsSHA("SHA-1","TEXT",{ encoding: "UTF8" });
         let jsticket="sM4AOVdWfPE4DxkXGEs8VIg3S6LumlLSveNvpaIZuJksAZZ-oyUc0sLCdN3vgvdRO-Gp1vPfzON-Mom4-DPC9w";
         let timestamp=1692837290;
@@ -51,7 +58,7 @@ window.onload = () => {
                 }
             });
         };
-        qrBt.innerText = "扫码添加"
+        qrBt.innerText = "扫码添加"*/
 }
 
 //export{};
