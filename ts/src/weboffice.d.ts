@@ -361,11 +361,14 @@ declare namespace WebOffice {
         onToast?: (toastData: { msg: string, action: string }) => void,
         onHyperLinkOpen?: (linkData: { linkUrl: string }) => void
     }
-
+    interface OfficeType{
+        
+    }
     type TGetClipboardData = () => clipboardData | Promise<clipboardData>
 }
 declare let WebOfficeSDK: {
     config: (conf: WebOffice.IConfig) => WebOffice.IWps;
+    init:({officeType:string,appId:string,fileId:string})=>WebOffice.IWps;
 }
 
 

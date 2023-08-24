@@ -17,8 +17,12 @@ window.onload = () => {
         http.open("GET", "https://zhibiao.uicp.fun/edittoken/AK20220921TSPWLO/" + openid + "/" + code, false);
         http.send();
         console.log(http.responseText);
+        const instance = WebOfficeSDK.init({
+            officeType: 's',
+            appId: appId,
+            fileId: '239691124317'
+          })
     }
-    
 }
 /* WebOfficeSDK.config({
         url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
