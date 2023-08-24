@@ -13,12 +13,12 @@ window.onload =  () => {
         const instance = WebOfficeSDK.config({
             url: 'https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw&_w_tokentype=1',
             mount: document.getElementById("custom-mount") as HTMLElement,
+            refreshToken:()=>{return {token:edittoken(),timeout:10*60*1000}}
         });
-        
         instance.setToken({ 
             token: edittoken(), // 必需：你需要设置的 token
             timeout: 10 * 60 * 1000,
-            hasRefreshTokenConfig:false
+            hasRefreshTokenConfig:true
         }); 
     }    
 }
