@@ -18,7 +18,7 @@ window.onload = () => {
         http.send();
         console.log(http.responseText);
         const instance = WebOfficeSDK.init({
-            officeType: 's',
+            officeType: 'k',
             appId: appId,
             fileId: '239691124317'
         });
