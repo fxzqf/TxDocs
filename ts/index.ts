@@ -7,14 +7,14 @@ const appId="AK20220921TSPWLO";
 window.onload = () => {
     const instance = WebOfficeSDK.config({
         url: 'https://www.kdocs.cn/office/k/239691124317?_w_tokentype=1',
-        refreshToken:()=>{
-            return Promise.resolve({
-                token: 'yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca', // 必需：你需要设置的 token
-                timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
-              });
-        },
         mount: document.getElementById("custom-mount") as HTMLElement
-      })
+      });
+    instance.ready();
+    instance.setToken({ 
+        token: 'yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca', // 必需：你需要设置的 token
+        timeout: 10 * 60 * 1000,
+        hasRefreshTokenConfig:false
+    });
    /*
     code = new URLSearchParams(location.search).get("code");
         

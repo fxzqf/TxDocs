@@ -8,13 +8,13 @@ const appId = "AK20220921TSPWLO";
 window.onload = () => {
     const instance = WebOfficeSDK.config({
         url: 'https://www.kdocs.cn/office/k/239691124317?_w_tokentype=1',
-        refreshToken: () => {
-            return Promise.resolve({
-                token: 'yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
-                timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
-            });
-        },
         mount: document.getElementById("custom-mount")
+    });
+    instance.ready();
+    instance.setToken({
+        token: 'yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
+        timeout: 10 * 60 * 1000,
+        hasRefreshTokenConfig: false
     });
     /*
      code = new URLSearchParams(location.search).get("code");
