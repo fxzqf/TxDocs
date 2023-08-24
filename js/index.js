@@ -23,7 +23,7 @@ window.onload = () => {
          }*/
     sha1 = new jsSHA("SHA-1", "TEXT", { encoding: "UTF8" });
     let jsticket = "sM4AOVdWfPE4DxkXGEs8VIg3S6LumlLSveNvpaIZuJksAZZ-oyUc0sLCdN3vgvdRO-Gp1vPfzON-Mom4-DPC9w";
-    let timestamp = 1692865801;
+    let timestamp = 1692837290;
     wx.config({
         debug: false,
         appId: 'wx8301d806150dba74',
