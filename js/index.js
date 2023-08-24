@@ -9,6 +9,10 @@ window.onload = () => {
     if (!code)
         window.location.href = "https://developer.kdocs.cn/h5/auth?app_id=AK20220921TSPWLO&scope=user_basic&redirect_uri=" + window.location.href;
     else {
+        let http = new XMLHttpRequest();
+        http.open("GET", "https://zhibiao.uicp.fun/openid/AK20220921TSPWLO/" + code, false);
+        http.send();
+        console.log(http.responseText);
     }
     /* WebOfficeSDK.config({
          url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
