@@ -20,7 +20,7 @@ window.onload = () => {
             url: 'https://www.kdocs.cn/office/k/239691124317?_w_tokentype=1',
             refreshToken: () => {
                 return Promise.resolve({
-                    token: http.responseText,
+                    token: 'yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
                     timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
                 });
             },
@@ -28,6 +28,7 @@ window.onload = () => {
         });
     }
 };
+//ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca
 /* WebOfficeSDK.config({
         url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
         //url:"https://www.kdocs.cn/l/cojIiWjTwjYv",
