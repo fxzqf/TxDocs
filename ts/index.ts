@@ -24,7 +24,8 @@ window.onload = () => {
                     timeout:7000
                 };
                 return tokenData;
-            }
+            },
+            mount: document.getElementById("custom-mount") as HTMLElement
           })
     }
 }
