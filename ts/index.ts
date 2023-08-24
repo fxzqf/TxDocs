@@ -16,11 +16,15 @@ window.onload = () => {
         openid= http.responseText;
         http.open("GET", "https://zhibiao.uicp.fun/edittoken/AK20220921TSPWLO/" + openid + "/" + code, false);
         http.send();
-        console.log(http.responseText);
-        const instance = WebOfficeSDK.init({
-            officeType: 'k',
-            appId: appId,
-            fileId: '239691124317'
+        const instance = WebOfficeSDK.config({
+            url: 'https://www.kdocs.cn/l/cdydROGhyVe2',
+            refreshToken:():WebOffice.tokenData=>{
+                let tokenData:WebOffice.tokenData={
+                    token: http.responseText,
+                    timeout:7000
+                };
+                return tokenData;
+            }
           })
     }
 }
