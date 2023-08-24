@@ -1,12 +1,13 @@
 let APP1: Et.Application;
 let records:any;
 let sha1:any;
+const appId="AK20220921TSPWLO";
 window.onload = () => {
     const oldCode=localStorage.getItem("oldCode");
     const openid=localStorage.getItem("openid");
     const searchParams = new URLSearchParams(location.search);
     const code = searchParams.get("code");
- 
+    
 
    /* WebOfficeSDK.config({
         url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",

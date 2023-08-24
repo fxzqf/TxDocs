@@ -2,6 +2,7 @@
 let APP1;
 let records;
 let sha1;
+const appId = "AK20220921TSPWLO";
 window.onload = () => {
     const oldCode = localStorage.getItem("oldCode");
     const openid = localStorage.getItem("openid");
