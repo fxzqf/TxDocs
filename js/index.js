@@ -10,12 +10,12 @@ window.onload = async () => {
         url: 'https://www.kdocs.cn/office/k/239691124317?_w_tokentype=1',
         mount: document.getElementById("custom-mount"),
     });
-    await instance.ready();
     instance.setToken({
         token: 'ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
         timeout: 10 * 60 * 1000,
         hasRefreshTokenConfig: false
     });
+    await instance.ready();
     /*
      code = new URLSearchParams(location.search).get("code");
          

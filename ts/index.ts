@@ -9,12 +9,13 @@ window.onload = async () => {
         url: 'https://www.kdocs.cn/office/k/239691124317?_w_tokentype=1',
         mount: document.getElementById("custom-mount") as HTMLElement,
       });
-    await instance.ready();
+    
     instance.setToken({ 
         token: 'ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca', // 必需：你需要设置的 token
         timeout: 10 * 60 * 1000,
         hasRefreshTokenConfig:false
     });
+    await instance.ready();
    /*
     code = new URLSearchParams(location.search).get("code");
         
