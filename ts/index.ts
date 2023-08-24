@@ -21,13 +21,13 @@ window.onload =  () => {
             mount: document.getElementById("custom-mount") as HTMLElement,
         });
 
-        //instance.ready().then((e)=>{
+        instance.ready().then((e)=>{
             instance.setToken({ 
                 token: http.responseText, // 必需：你需要设置的 token
                 timeout: 10 * 60 * 1000,
                 hasRefreshTokenConfig:false
             });
-        //}) 
+        }) 
     }    
     //await instance.ready();
 }

@@ -20,13 +20,13 @@ window.onload = () => {
             url: 'https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw&_w_tokentype=1',
             mount: document.getElementById("custom-mount"),
         });
-        //instance.ready().then((e)=>{
-        instance.setToken({
-            token: http.responseText,
-            timeout: 10 * 60 * 1000,
-            hasRefreshTokenConfig: false
+        instance.ready().then((e) => {
+            instance.setToken({
+                token: http.responseText,
+                timeout: 10 * 60 * 1000,
+                hasRefreshTokenConfig: false
+            });
         });
-        //}) 
     }
     //await instance.ready();
 };
