@@ -20,14 +20,14 @@ window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
         mount: document.getElementById("custom-mount"),
         refreshToken() {
             return Promise.resolve({
-                token: 'yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
+                token: 'ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
                 timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
             });
         },
     });
     yield instance.ready();
     instance.setToken({
-        token: 'yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
+        token: 'ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
         timeout: 10 * 60 * 1000,
         hasRefreshTokenConfig: false
     });

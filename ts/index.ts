@@ -10,14 +10,14 @@ window.onload = async () => {
         mount: document.getElementById("custom-mount") as HTMLElement,
         refreshToken() {
             return Promise.resolve({
-                token: 'yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca', // 必需：你需要设置的 token
+                token: 'ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca', // 必需：你需要设置的 token
                 timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
               });
         },
       });
     await instance.ready();
     instance.setToken({ 
-        token: 'yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca', // 必需：你需要设置的 token
+        token: 'ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca', // 必需：你需要设置的 token
         timeout: 10 * 60 * 1000,
         hasRefreshTokenConfig:false
     });
