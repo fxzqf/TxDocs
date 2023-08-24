@@ -10,23 +10,27 @@ window.onload = () => {
     if (!code)
         window.location.href = "https://developer.kdocs.cn/h5/auth?app_id=AK20220921TSPWLO&scope=user_basic&redirect_uri=" + window.location.href;
     else {
-        let http = new XMLHttpRequest();
-        http.open("GET", "https://zhibiao.uicp.fun/openid/AK20220921TSPWLO/" + code, false);
-        http.send();
-        openid = http.responseText;
-        http.open("GET", "https://zhibiao.uicp.fun/edittoken/AK20220921TSPWLO/" + openid + "/" + code, false);
-        http.send();
         const instance = WebOfficeSDK.config({
             url: 'https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw&_w_tokentype=1',
             mount: document.getElementById("custom-mount"),
+            refreshToken: () => { return { token: edittoken(), timeout: 10 * 60 * 1000 }; }
         });
-        instance.setToken({
-            token: http.responseText,
-            timeout: 10 * 60 * 1000,
-            hasRefreshTokenConfig: false
-        });
+        //instance.setToken({ 
+        //    token: edittoken(), // 必需：你需要设置的 token
+        //    timeout: 10 * 60 * 1000,
+        //    hasRefreshTokenConfig:false
+        // });
     }
 };
+function edittoken() {
+    let http = new XMLHttpRequest();
+    http.open("GET", "https://zhibiao.uicp.fun/openid/AK20220921TSPWLO/" + code, false);
+    http.send();
+    openid = http.responseText;
+    http.open("GET", "https://zhibiao.uicp.fun/edittoken/AK20220921TSPWLO/" + openid + "/" + code, false);
+    http.send();
+    return http.responseText;
+}
 //ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca
 /* WebOfficeSDK.config({
         url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
