@@ -9,12 +9,6 @@ window.onload = async () => {
     const instance = WebOfficeSDK.config({
         url: 'https://www.kdocs.cn/office/k/239691124317?_w_tokentype=1',
         mount: document.getElementById("custom-mount"),
-        refreshToken() {
-            return Promise.resolve({
-                token: 'ExchangeToken-yoqaiykqijxhzpjmetaleqnrphxbhsxdgxoqewaisnduqcca',
-                timeout: 10 * 60 * 1000, //  必需：token 超时时间，以 10 分钟示例
-            });
-        },
     });
     await instance.ready();
     instance.setToken({
