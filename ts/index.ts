@@ -6,7 +6,7 @@ let openid:string|null;
 const appId="AK20220921TSPWLO";
 window.onload = async () => {
     const instance = WebOfficeSDK.config({
-        url: 'https://www.kdocs.cn/office/k/239691124317?_w_tokentype=1',
+        url: 'https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw&_w_tokentype=1',
         mount: document.getElementById("custom-mount") as HTMLElement,
       });
     
