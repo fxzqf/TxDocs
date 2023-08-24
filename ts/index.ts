@@ -17,7 +17,7 @@ window.onload = () => {
         http.open("GET", "https://zhibiao.uicp.fun/edittoken/AK20220921TSPWLO/" + openid + "/" + code, false);
         http.send();
         const instance = WebOfficeSDK.config({
-            url: 'https://www.kdocs.cn/l/cdydROGhyVe2',
+            url: 'https://www.kdocs.cn/l/cdydROGhyVe2?_w_tokentype=1',
             refreshToken:():WebOffice.tokenData=>{
                 let tokenData:WebOffice.tokenData={
                     token: http.responseText,
