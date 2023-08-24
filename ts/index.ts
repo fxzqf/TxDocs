@@ -1,22 +1,27 @@
 let APP1: Et.Application;
 let records:any;
 let sha1:any;
+let code:string|null;
+let openid:string|null;
 const appId="AK20220921TSPWLO";
 window.onload = () => {
-    
-        const searchParams = new URLSearchParams(location.search);
-        const code = searchParams.get("code");
-        if (!code)  
-            window.location.href = "https://developer.kdocs.cn/h5/auth?app_id=AK20220921TSPWLO&scope=user_basic&redirect_uri=" + window.location.href;
-        else{
-            let http=new XMLHttpRequest();
-            http.open("GET","https://zhibiao.uicp.fun/openid/AK20220921TSPWLO/" + code,false);
-            http.send();
-            console.log( http.responseText);
-        }
-    
+    code = new URLSearchParams(location.search).get("code");
+        
+    if (!code)  
+        window.location.href = "https://developer.kdocs.cn/h5/auth?app_id=AK20220921TSPWLO&scope=user_basic&redirect_uri=" + window.location.href;
+    else{
+        let http=new XMLHttpRequest();
+        http.open("GET","https://zhibiao.uicp.fun/openid/AK20220921TSPWLO/" + code,false);
+        http.send();
+        openid= http.responseText;
+        http.open("GET", "https://zhibiao.uicp.fun/edittoken/AK20220921TSPWLO/" + openid + "/" + code, false);
+        http.send();
+        console.log(http.responseText);
 
-   /* WebOfficeSDK.config({
+    }
+    
+}
+/* WebOfficeSDK.config({
         url: "https://www.kdocs.cn/office/k/239691124317?app_id=13gVPYyaoLrMZiw8PLADO1&share_id=G0YVC341pDSuNDbmr2rXw-iw",
         //url:"https://www.kdocs.cn/l/cojIiWjTwjYv",
         mount: document.getElementById("custom-mount") as HTMLElement,
@@ -68,7 +73,6 @@ window.onload = () => {
         };
         qrBt.innerText = "扫码添加"
     */
-}
-
+   
 
 //export{};
